@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"/>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" defer></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons/dist/ionicons/ionicons.esm.js" defer></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons/dist/ionicons/ionicons.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <title>SUS(plane)ABILITY</title>
+</head>
+
+<body>
+<div class="container">
+    <header class="page-header">
+        <h1 class ="page-title">
+            SUS(
+            <ion-icon name="airplane"></ion-icon>
+            )ABILITY
+        </h1>
+    </header>
+    <main>
+        <div id="map">
+            <img src="img/eumap.jpg" alt="eu map">
+        </div>
+        <div class="boxes">
+            <section class="box">
+                <header>
+                    <h2>Country facts</h2>
+                </header>
+                <table>
+                    <tr>
+                        <td>Current country: <span id="current-country">Spain</span></td>
+                    </tr>
+                    <tr>
+                        <td>Population: <span id="population">1503020</span></td>
+                        <td>Language: <span id="language">Spanish</span></td>
+                        <td>Currency: <span id="currency">€</span></td>
+                        <td>Flag: <span id="flag">asdf</span></td>
+                    </tr>
+                </table>
+            </section>
+            <section class="box">
+                <table>
+                    <td>
+                        <img id="weather-icon" src="https://openweathermap.org/img/wn/10d@2x.png" alt="current weather">
+                    </td>
+                    <td class="temperature"><span>10°C</span></td>
+                </table>
+
+            </section>
+        </div>
+        <div class="status">
+            <section class="stats">
+                <header>
+                    <h2>Game status</h2>
+                </header>
+                <table>
+                    <tr>
+                        <td>Player name</td>
+                    </tr>
+                    <tr>
+                        <td><span id="timer">10:00</span></td>
+                        <td><span id="countries">5</span>/50</td>
+                        <td>Co2 status <span id="consumed">10000</span>/10000 Co2</td>
+                        <td>Dice: <span id="dice">3</span></td>
+                    </tr>
+                </table>
+            </section>
+        </div>
+    </main>
+    <footer class="page-footer">
+        <p>SUS(PLANE)ABILITY Made by Group 2.</p>
+    </footer>
+</div>
+
+<div id="player-modal">
+    <form id="player-form">
+        <input type="text" placeholder="Player name" required>
+        <input type="submit" value="Start game">
+    </form>
+</div>
+</body>
+
+</html>
