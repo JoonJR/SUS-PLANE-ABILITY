@@ -2,6 +2,8 @@
   "status": {
     "id": "8UdJb2gimIHPpkGaP6hT",
     "name": "Test Player",
+    "dice": 1,
+    "countries": 0,
     "co2": {
       "consumed": 0,
       "budget": 10000
