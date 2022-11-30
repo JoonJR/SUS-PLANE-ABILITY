@@ -20,12 +20,12 @@ const blueIcon = L.divIcon({className: 'blue-icon'})
 const greenIcon = L.divIcon({className: 'green-icon'})
 
 // form for player name
-document.querySelector('#player-form').addEventListener('submit', function (evt) {
-  evt.preventDefault();
-  const playerName = document.querySelector('#player-input').value;
-  document.querySelector('#player-modal').classList.add('hide');
-  gameSetup(`${apiUrl}newgame?player=${playerName}&loc=${startLoc}`);
-});
+// document.querySelector('#player-form').addEventListener('submit', function (evt) {
+//   evt.preventDefault();
+//   const playerName = document.querySelector('#player-input').value;
+//   document.querySelector('#player-modal').classList.add('hide');
+//   gameSetup(`${apiUrl}newgame?player=${playerName}&loc=${startLoc}`);
+// });
 
 // function to fetch data from API
 async function getData(url){
@@ -42,13 +42,13 @@ function updateStatus(status) {
   document.querySelector('#dice').innerHTML = status.dice;
 }
 // function to show weather at selected airport
-function showWeather(airport){
+// function showWeather(airport){
 
-  document.querySelector('#temperature').innerHTML =  `${airport.weather.temp}°C`;
-  document.querySelector('#weather-icon').src = airport.weather.icon;
+//   document.querySelector('#temperature').innerHTML =  `${airport.weather.temp}°C`;
+//   document.querySelector('#weather-icon').src = airport.weather.icon;
 
 
-}
+
 // function to check if any goals have been reached
 
 // function to update goal data and goal table in UI
@@ -71,12 +71,12 @@ async function gameSetup(url){
   try {
     const gameData = await getData(url);
     console.log(gameData);
-    updateStatus(gameData.status);
+    // updateStatus(gameData.status);
 
-    for(let airport of gameData){
+      for(let airport of gameData){
       const marker = L.marker([airport.latitude, airport.longitude]).addTo(map);
       if(airport.active){
-        showWeather(airport);
+        // showWeather(airport);
         marker.bindPopup(`You are here: <b>${airport.name}</b>`);
         marker.openPopup();
         marker.setIcon(greenIcon);
