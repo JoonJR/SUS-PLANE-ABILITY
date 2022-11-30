@@ -10,12 +10,22 @@ map.setView([60, 24], 7);
 
 
 // global variables
+const apiUrl = 'http://127.0.0.1:5000/airports';
+const startLoc = 'EFHK';
+const globalGoals = [];
+const airportMarkers = L.featureGroup().addTo(map);
 
 // icons
 const blueIcon = L.divIcon({className: 'blue-icon'})
 const greenIcon = L.divIcon({className: 'green-icon'})
 
 // form for player name
+document.querySelector('#player-form').addEventListener('submit', function (evt) {
+  evt.preventDefault();
+  const playerName = document.querySelector('#player-input').value;
+  document.querySelector('#player-modal').classList.add('hide');
+  gameSetup(`${apiUrl}newgame?player=${playerName}&loc=${startLoc}`);
+});
 
 // function to fetch data from API
 async function getData(url){
@@ -46,17 +56,24 @@ function updateGoals(goals){
 
 }
 // function to check if game is over
+function checkGameOver(budget) {
+  if (budget <= 0) {
+    alert(`Game Over. ${globalGoals.length} goals reached.`);
+    return false;
+  }
+  return true;
+}
 
 // function to set up game
 
 // this is the main function that creates the game and calls the other functions
-async function gameSetup(){
+async function gameSetup(url){
   try {
-    const gameData = await getData('testdata/newgame.json');
+    const gameData = await getData(url);
     console.log(gameData);
     updateStatus(gameData.status);
 
-    for(let airport of gameData.location){
+    for(let airport of gameData){
       const marker = L.marker([airport.latitude, airport.longitude]).addTo(map);
       if(airport.active){
         showWeather(airport);
@@ -85,5 +102,5 @@ async function gameSetup(){
   }
 }
 
-gameSetup();
+gameSetup(apiUrl);
 // event listener to hide goal splash
