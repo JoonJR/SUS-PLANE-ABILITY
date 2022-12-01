@@ -2,6 +2,17 @@ import random
 import config
 from weather import Weather
 from geopy import distance
+from flask import Flask
+from flask_cors import CORS
+import mysql.connector
+
+import config
+
+
+
+
+
+
 
 
 class Airport:
@@ -24,11 +35,12 @@ class Airport:
                 self.name = res[0][1]
                 self.latitude = float(res[0][2])
                 self.longitude = float(res[0][3])
+                print(self.ident, self.name, self.latitude, self.longitude)
         else:
             self.name = data['name']
             self.latitude = float(data['latitude'])
             self.longitude = float(data['longitude'])
-
+            print('Else')
 
     def find_nearby_airports(self):
         # print("Testing geopy...")
@@ -69,4 +81,6 @@ class Airport:
 
     def co2_consumption(self, km):
         consumption = config.co2_per_flight + km * config.co2_per_km
+        print(consumption)
         return consumption
+

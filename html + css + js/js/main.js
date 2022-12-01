@@ -9,7 +9,7 @@ L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
 map.setView([60, 24], 7);
 
 // global variables
-const apiUrl = 'http://127.0.0.1:5000/';
+const apiUrl = 'http://127.0.0.1:5000/airports';
 const startLoc = 'EFHK';
 const globalGoals = [];
 const airportMarkers = L.featureGroup().addTo(map);
@@ -100,6 +100,7 @@ async function gameSetup(url) {
     document.querySelector('.goal').classList.add('hide');
     airportMarkers.clearLayers();
     const gameData = await getData(url);
+    //const gameData = await getData('testdataa/newgame.json');
     console.log(gameData);
     updateStatus(gameData.status);
     if (!checkGameOver(gameData.status.co2.budget)) return;
