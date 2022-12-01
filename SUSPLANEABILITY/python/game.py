@@ -83,7 +83,11 @@ def airports():
             "longitude": r[4]
         }
         airports_list.append(response)
-        airports_list[0]["active"] = True #just to test
+        rresult = json.dumps(airports_list)
+        list.append(rresult)
+        
+        
+        #airports_list[0]["active"] = True #just to test
         
     return airports_list
 
