@@ -42,22 +42,22 @@ function updateStatus(status) {
   document.querySelector('#countries').innerHTML = status.countries;
   document.querySelector('#dice').innerHTML = status.dice;
   if (status.dice === 1) {
-    alert('dice : 1');
+    alert('Oops..you died..');
   }
   if (status.dice === 2) {
-    alert('dice : 2');
+    alert('You had to take an unexpected detour. Double the amount of Co2 consumed.');
   }
   if (status.dice === 3) {
-    alert('dice : 3');
+    alert(' Your planes GPS breaks and you ended up somewhere else.');
   }
   if (status.dice === 4) {
-    alert('dice : 4');
+    alert('Your plane had to return to the previous airport. Full amount of Co2 wasted for that trip.');
   }
   if (status.dice === 5) {
-    alert('dice : 5');
+    alert('You got a 50% Co2 refund for this flight.');
   }
   if (status.dice === 6) {
-    alert('dice : 6');
+    alert('You got a full Co2 refund for this flight.');
   }
   console.log(status.dice);
 }
