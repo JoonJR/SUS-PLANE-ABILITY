@@ -22,7 +22,7 @@ class Game:
                     "consumed" : config.co2_initial,
                     "budget" : config.co2_budget
                 },
-                "dice" :random.randint(1,6),
+                "dice" :0,
                 "collected_countries" : config.collected_countries,
                 "previous_location" : ""
             }
