@@ -41,6 +41,24 @@ function updateStatus(status) {
   document.querySelector('#consumed').innerHTML = status.co2.consumed;
   document.querySelector('#countries').innerHTML = status.countries;
   document.querySelector('#dice').innerHTML = status.dice;
+  if (status.dice === 1) {
+    alert('dice : 1');
+  }
+  if (status.dice === 2) {
+    alert('dice : 2');
+  }
+  if (status.dice === 3) {
+    alert('dice : 3');
+  }
+  if (status.dice === 4) {
+    alert('dice : 4');
+  }
+  if (status.dice === 5) {
+    alert('dice : 5');
+  }
+  if (status.dice === 6) {
+    alert('dice : 6');
+  }
   console.log(status.dice);
 }
 // function to show weather at selected airport
