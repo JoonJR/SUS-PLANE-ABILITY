@@ -40,9 +40,28 @@ class Game:
 
         else:
             #update consumption and budget
-            ran = str(random.randint(1,6))
-            sql2 = "UPDATE Game SET co2_consumed = co2_consumed + " + consumption + ", co2_budget = co2_budget - " + consumption + ", dice = " + ran + " WHERE id='" + id + "'"
+            ran = random.randint(1,6)
+            sql2 = ""
+            print("dice is " + str(ran))
+            dice2 = int(consumption) * 2
+            dice5 = int(consumption) / 2
+            dice6 = int(consumption) - int(consumption)
+           
+            if ran == 1:
+                sql2 = "UPDATE Game SET co2_consumed = co2_consumed + " + consumption + ", co2_budget = co2_budget - " + consumption + ", dice = " + str(ran) + " WHERE id='" + id + "'"
+            if ran == 2:
+                sql2 = "UPDATE Game SET co2_consumed = co2_consumed + " + str(dice2) + ", co2_budget = co2_budget - " + str(dice2) + ", dice = " + str(ran) + " WHERE id='" + id + "'"
+            if ran == 3:
+                sql2 = "UPDATE Game SET co2_consumed = co2_consumed + " + consumption + ", co2_budget = co2_budget - " + consumption + ", dice = " + str(ran) + " WHERE id='" + id + "'"
+            if ran == 4:
+                sql2 = "UPDATE Game SET co2_consumed = co2_consumed + " + consumption + ", co2_budget = co2_budget - " + consumption + ", dice = " + str(ran) + " WHERE id='" + id + "'"
+            if ran == 5:
+                sql2 = "UPDATE Game SET co2_consumed = co2_consumed + " + str(dice5) + ", co2_budget = co2_budget - " + str(dice5) + ", dice = " + str(ran) + " WHERE id='" + id + "'"
+            if ran == 6:
+                sql2 = "UPDATE Game SET co2_consumed = co2_consumed + " + str(dice6) + ", co2_budget = co2_budget - " + str(dice6) + ", dice = " + str(ran) + " WHERE id='" + id + "'"
+
             print(sql2)
+            print(consumption)
             cur2 = config.conn.cursor()
             cur2.execute(sql2)
             # find game from DB

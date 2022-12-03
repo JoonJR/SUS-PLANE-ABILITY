@@ -37,9 +37,9 @@ async function getData(url){
 }
 // function to update game status
 function updateStatus(status) {
-  // document.querySelector('#player-name').innerHTML = `Player: ${status.name}`;
+  document.querySelector('#player-name').innerHTML = `Player: ${status.name}`;
   document.querySelector('#consumed').innerHTML = status.co2.consumed;
-  document.querySelector('#countries').innerHTML = status.countries;
+  // document.querySelector('#countries').innerHTML = status.countries;
   document.querySelector('#dice').innerHTML = status.dice;
   if (status.dice === 1) {
     alert('Oops..you died..');
