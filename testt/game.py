@@ -42,7 +42,6 @@ class Game:
             #update consumption and budget
             ran = random.randint(1,6)
             sql2 = ""
-            print("dice is " + str(ran))
             dice2 = int(consumption) * 2
             dice5 = int(consumption) / 2
             dice6 = int(consumption) - int(consumption)
