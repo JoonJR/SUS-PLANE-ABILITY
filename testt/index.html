@@ -45,11 +45,19 @@
                 </table>
             </section>
             <section class="box">
-                <table>
-                    <td>
-                        <img id="weather-icon" src="https://openweathermap.org/img/wn/10d@2x.png" alt="current weather">
-                    </td>
-                    <td><span id="temperature">10°C</span></td>
+                <table id="weather">
+                    <tr>
+                        <td>Temperature</td>
+                        <td>
+                            <img id="weather-icon" src="https://openweathermap.org/img/wn/10d@2x.png"  alt="Current weather">
+                        </td>
+                        <td>Wind</td>
+                    </tr>
+                    <tr>
+                        <td id="airport-temp">10°C</td>
+                        <td id="airport-conditions">Cloudy</td>
+                        <td id="airport-wind">40m/s</td>
+                    </tr>
                 </table>
 
             </section>

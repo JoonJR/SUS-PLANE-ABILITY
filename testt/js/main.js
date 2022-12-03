@@ -42,7 +42,8 @@ function updateStatus(status) {
   // document.querySelector('#countries').innerHTML = status.countries;
   document.querySelector('#dice').innerHTML = status.dice;
   if (status.dice === 1) {
-    alert('Oops..you died..');
+    // alert('Oops..you died..');
+    
   }
   if (status.dice === 2) {
     alert('You had to take an unexpected detour. Double the amount of Co2 consumed.');
@@ -62,13 +63,13 @@ function updateStatus(status) {
   console.log(status.dice);
 }
 // function to show weather at selected airport
-// function showWeather(airport) {
-//   document.querySelector('#airport-name').innerHTML = `Weather at ${airport.name}`;
-//   document.querySelector('#airport-temp').innerHTML = `${airport.weather.temp}°C`;
-//   document.querySelector('#weather-icon').src = airport.weather.icon;
-//   document.querySelector('#airport-conditions').innerHTML = airport.weather.description;
-//   document.querySelector('#airport-wind').innerHTML = `${airport.weather.wind.speed}m/s`;
-// }
+function showWeather(airport) {
+  // document.querySelector('#airport-name').innerHTML = `Weather at ${airport.name}`;
+  document.querySelector('#airport-temp').innerHTML = `${airport.weather.temp}°C`;
+  document.querySelector('#weather-icon').src = airport.weather.icon;
+  document.querySelector('#airport-conditions').innerHTML = airport.weather.description;
+  document.querySelector('#airport-wind').innerHTML = `${airport.weather.wind.speed}m/s`;
+}
 
 
 // function to check if any goals have been reached
@@ -85,6 +86,13 @@ function checkGameOver(budget) {
   }
   return true;
 }
+function GameOver(dice) {
+  if (dice === 1) {
+    alert(`Game Over. You plane crashed.`);
+    return false;
+  }
+  return true;
+}
 
 // function to set up game
 
@@ -94,11 +102,12 @@ async function gameSetup(url){
     const gameData = await getData(url);
     console.log(gameData);
     updateStatus(gameData.status);
-    if (!checkGameOver(gameData.status.co2.budget)) return;
+      if (!checkGameOver(gameData.status.co2.budget)) return;
+      if (!GameOver(gameData.status.dice)) return;
       for(let airport of gameData.location){
       const marker = L.marker([airport.latitude, airport.longitude]).addTo(map);
       if(airport.active){
-        // showWeather(airport);
+        showWeather(airport);
         marker.bindPopup(`You are here: <b>${airport.name}</b>`);
         marker.openPopup();
         marker.setIcon(greenIcon);
