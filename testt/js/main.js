@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 /* 1. show map using Leaflet library. (L comes from the Leaflet library) */
 
 const map = L.map('map', {tap: false});
@@ -18,6 +18,31 @@ const airportMarkers = L.featureGroup().addTo(map);
 // icons
 const blueIcon = L.divIcon({className: 'blue-icon'})
 const greenIcon = L.divIcon({className: 'green-icon'})
+
+//timer
+document.getElementById('timer').innerHTML =
+  10 + ":" + 00;
+startTimer();
+function startTimer() {
+  var presentTime = document.getElementById('timer').innerHTML;
+  var timeArray = presentTime.split(/[:]+/);
+  var m = timeArray[0];
+  var s = checkSecond((timeArray[1] - 1));
+  if(s==59){m=m-1}
+  if(m<0){
+    return
+  }
+  document.getElementById('timer').innerHTML =
+    m + ":" + s;
+  console.log(m)
+  setTimeout(startTimer, 1000);
+  
+}
+function checkSecond(sec) {
+  if (sec < 10 && sec >= 0) {sec = "0" + sec}; // add zero in front of numbers < 10
+  if (sec < 0) {sec = "59"};
+  return sec;
+}
 
 //form for player name
 document.querySelector('#player-form').addEventListener('submit', function (evt) {
