@@ -36,8 +36,6 @@ class Game:
             print(sql)
             cur = config.conn.cursor()
             cur.execute(sql)
-
-            
        
 
         else:
@@ -111,17 +109,17 @@ class Game:
         #self.loc = sijainti.ident
 
 
-    # def fetch_goal_info(self):
+    def fetch_goal_info(self):
 
-    #     sql = "SELECT * FROM (SELECT Goal.id, Goal.name, Goal.description, Goal.icon, goalreached.gameid, "
-    #     sql += "Goal.target, Goal.target_minvalue, Goal.target_maxvalue, Goal.target_text "
-    #     sql += "FROM Goal INNER JOIN goalreached ON Goal.id = goalreached.goalid "
-    #     sql += "WHERE goalreached.gameid = '" + self.status["id"] + "' "
-    #     sql += "UNION SELECT Goal.id, Goal.name, Goal.description, Goal.icon, NULL, "
-    #     sql += "Goal.target, Goal.target_minvalue, Goal.target_maxvalue, Goal.target_text "
-    #     sql += "FROM Goal WHERE Goal.id NOT IN ("
-    #     sql += "SELECT Goal.id FROM Goal INNER JOIN goalreached ON Goal.id = goalreached.goalid "
-    #     sql += "WHERE goalreached.gameid = '" + self.status["id"] + "')) AS t ORDER BY t.id;"
+        sql = "SELECT * FROM (SELECT Goal.id, Goal.name, Goal.description, Goal.icon, goalreached.gameid, "
+        sql += "Goal.target, Goal.target_minvalue, Goal.target_maxvalue, Goal.target_text "
+        sql += "FROM Goal INNER JOIN goalreached ON Goal.id = goalreached.goalid "
+        sql += "WHERE goalreached.gameid = '" + self.status["id"] + "' "
+        sql += "UNION SELECT Goal.id, Goal.name, Goal.description, Goal.icon, NULL, "
+        sql += "Goal.target, Goal.target_minvalue, Goal.target_maxvalue, Goal.target_text "
+        sql += "FROM Goal WHERE Goal.id NOT IN ("
+        sql += "SELECT Goal.id FROM Goal INNER JOIN goalreached ON Goal.id = goalreached.goalid "
+        sql += "WHERE goalreached.gameid = '" + self.status["id"] + "')) AS t ORDER BY t.id;"
 
         # print(sql)
         cur = config.conn.cursor()
