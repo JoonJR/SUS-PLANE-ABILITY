@@ -72,7 +72,7 @@ function updateStatus(status) {
   document.querySelector('#countries').innerHTML = status.collected_countries;
   document.querySelector('#dice').innerHTML = status.dice;
   if (status.dice === 1) {
-    // alert('Oops..you died..');
+    alert('Oops..you died..'); // doesnt do anything yet
     
   }
   if (status.dice === 2) {
@@ -140,8 +140,8 @@ async function gameSetup(url){
     const gameData = await getData(url);
     console.log(gameData);
     updateStatus(gameData.status);
-      if (!checkGameOver(gameData.status.co2.budget)) return;
-      if (!GameOver(gameData.status.dice)) return;
+      // if (!checkGameOver(gameData.status.co2.budget)) return;
+      // if (!GameOver(gameData.status.dice)) return;
       // if (!noTime(timer())) return;
       for(let airport of gameData.location){
       const marker = L.marker([airport.latitude, airport.longitude]).addTo(map);
