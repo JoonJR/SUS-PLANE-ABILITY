@@ -76,10 +76,10 @@ class Airport:
         consumption = config.co2_per_flight + km * config.co2_per_km
         return consumption
 
-    def country_data(self):
-        iso_code = self.iso_code
-        self.facts = Facts(self, iso_code)
-        return
+    # def country_data(self):
+    #     iso_code = self.iso_code
+    #     self.facts = Facts(self, iso_code)
+    #     return
 
 
 
