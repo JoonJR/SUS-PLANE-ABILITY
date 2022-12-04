@@ -3,6 +3,11 @@ from airport import Airport
 from goal import Goal
 import config
 
+icao_list = ["AD-ALV", 'LATI', 'LOWW',"LQSA", 'EBBR', 'LBSF','UMMS', 'LSZB', 'LKPR', 'EDDB', 'EKCH', 'EETN', 'LEMD', 
+'EFHK', 'EKVG', 'LFPG', 'EGLL', 'EGJB', 'LXGB', 'LGAV', 'LDZA', 'LHBP','EIDW','EGNS','BIRK','LIRF','EGJJ',
+'LSXB','EYVI','ELLX','EVRA','LNMC','LUKK','LYPG','LWSK','LMML','EHAM','ENGM','EPWA','LPPT','LROP','LYBE','UUDD',
+'ESSA','LJLJ','LZIB','LIKD','UKKK','VA-0001','BKPR']
+
 class Game:
 
     def __init__(self, id, loc, consumption, player=None):
@@ -43,25 +48,37 @@ class Game:
             dice5 = int(consumption) / 2
             dice6 = int(consumption) - int(consumption)
             c = 1 
+            ## doesnt collect previous country
+            if loc in icao_list:
+                c = 1
+                sql3 = "UPDATE Game SET collected_countries = collected_countries +" + str(c) + " WHERE id='" + id + "'"
+                cur3 = config.conn.cursor()
+                cur3.execute(sql3)
+                icao_list.remove(loc)
+            else:
+                sql3 = "UPDATE Game SET collected_countries = collected_countries" + " WHERE id='" + id + "'"
+                cur3 = config.conn.cursor()
+                cur3.execute(sql3)
+        
             if ran == 1:
-                sql2 = "UPDATE Game SET co2_consumed = co2_consumed + " + consumption + ", co2_budget = co2_budget - " + consumption + ", dice = " + str(ran) + ", collected_countries = collected_countries + " + str(c) + " WHERE id='" + id + "'"
+                sql2 = "UPDATE Game SET co2_consumed = co2_consumed + " + consumption + ", co2_budget = co2_budget - " + consumption + ", dice = " + str(ran) + " WHERE id='" + id + "'"
             if ran == 2:
-                sql2 = "UPDATE Game SET co2_consumed = co2_consumed + " + str(dice2) + ", co2_budget = co2_budget - " + str(dice2) + ", dice = " + str(ran) + ", collected_countries = collected_countries + " + str(c) + " WHERE id='" + id + "'"
+                sql2 = "UPDATE Game SET co2_consumed = co2_consumed + " + str(dice2) + ", co2_budget = co2_budget - " + str(dice2) + ", dice = " + str(ran)  + " WHERE id='" + id + "'"
             if ran == 3:
-                sql2 = "UPDATE Game SET co2_consumed = co2_consumed + " + consumption + ", co2_budget = co2_budget - " + consumption + ", dice = " + str(ran) + ", collected_countries = collected_countries + " + str(c) + " WHERE id='" + id + "'"
+                sql2 = "UPDATE Game SET co2_consumed = co2_consumed + " + consumption + ", co2_budget = co2_budget - " + consumption + ", dice = " + str(ran)  + " WHERE id='" + id + "'"
             if ran == 4:
-                sql2 = "UPDATE Game SET co2_consumed = co2_consumed + " + consumption + ", co2_budget = co2_budget - " + consumption + ", dice = " + str(ran) + ", collected_countries = collected_countries + " + str(c) + " WHERE id='" + id + "'"
+                sql2 = "UPDATE Game SET co2_consumed = co2_consumed + " + consumption + ", co2_budget = co2_budget - " + consumption + ", dice = " + str(ran) +  " WHERE id='" + id + "'"
             if ran == 5:
-                sql2 = "UPDATE Game SET co2_consumed = co2_consumed + " + str(dice5) + ", co2_budget = co2_budget - " + str(dice5) + ", dice = " + str(ran) + ", collected_countries = collected_countries + " + str(c) + " WHERE id='" + id + "'"
+                sql2 = "UPDATE Game SET co2_consumed = co2_consumed + " + str(dice5) + ", co2_budget = co2_budget - " + str(dice5) + ", dice = " + str(ran) + " WHERE id='" + id + "'"
             if ran == 6:
-                sql2 = "UPDATE Game SET co2_consumed = co2_consumed + " + str(dice6) + ", co2_budget = co2_budget - " + str(dice6) + ", dice = " + str(ran) + ", collected_countries = collected_countries + " + str(c) + " WHERE id='" + id + "'"
+                sql2 = "UPDATE Game SET co2_consumed = co2_consumed + " + str(dice6) + ", co2_budget = co2_budget - " + str(dice6) + ", dice = " + str(ran) + " WHERE id='" + id + "'"
 
             print("updates sql2 " + sql2)
             cur2 = config.conn.cursor()
             cur2.execute(sql2)
             # find game from DB
             sql = "SELECT id, co2_consumed, co2_budget, location, screen_name, dice, collected_countries FROM Game WHERE id='" + id + "'"
-            # print(sql)
+            print(sql)
             cur = config.conn.cursor()
             cur.execute(sql)
             res = cur.fetchall()
@@ -84,6 +101,10 @@ class Game:
                 apt = Airport(loc, True)
                 self.location.append(apt)
                 self.set_location(apt)
+
+                
+
+
 
             else:
                 print("************** PELIÄ EI LÖYDY! ***************")
