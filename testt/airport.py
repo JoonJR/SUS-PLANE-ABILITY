@@ -30,6 +30,7 @@ class Airport:
             self.name = data['name']
             self.latitude = float(data['latitude'])
             self.longitude = float(data['longitude'])
+
     
 
 
@@ -74,5 +75,12 @@ class Airport:
     def co2_consumption(self, km):
         consumption = config.co2_per_flight + km * config.co2_per_km
         return consumption
+
+    def country_data(self):
+        iso_code = self.iso_code
+        self.facts = Facts(self, iso_code)
+        return
+
+
 
 
