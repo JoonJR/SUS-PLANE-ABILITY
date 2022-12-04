@@ -12,7 +12,6 @@ class Game:
 
         if id==0:
             # new game
-            # Create new game id
             letters = string.ascii_lowercase + string.ascii_uppercase + string.digits
 
             self.status = {
@@ -23,13 +22,11 @@ class Game:
                     "budget" : config.co2_budget
                 },
                 "dice" :0,
-                "collected_countries" : config.collected_countries,
+                "collected_countries" : 1,
                 "previous_location" : ""
             }
-
-
-
             self.location.append(Airport(loc, True))
+
             sql = "INSERT INTO Game VALUES ('" + self.status["id"] + "', " + str(self.status["co2"]["consumed"])
             sql += ", " + str(self.status["co2"]["budget"]) + ", '" + self.status["name"] + "', '" + loc
             sql += "', " + str(self.status["dice"]) + ", " + str(self.status["collected_countries"]) + ")"
@@ -39,13 +36,12 @@ class Game:
        
 
         else:
-            #update consumption and budget
+            #update consumption, dice and budget
             ran = random.randint(1,6)
             sql2 = ""
             dice2 = int(consumption) * 2
             dice5 = int(consumption) / 2
             dice6 = int(consumption) - int(consumption)
-           
             if ran == 1:
                 sql2 = "UPDATE Game SET co2_consumed = co2_consumed + " + consumption + ", co2_budget = co2_budget - " + consumption + ", dice = " + str(ran) + " WHERE id='" + id + "'"
             if ran == 2:
@@ -60,7 +56,6 @@ class Game:
                 sql2 = "UPDATE Game SET co2_consumed = co2_consumed + " + str(dice6) + ", co2_budget = co2_budget - " + str(dice6) + ", dice = " + str(ran) + " WHERE id='" + id + "'"
 
             print(sql2)
-            print(consumption)
             cur2 = config.conn.cursor()
             cur2.execute(sql2)
             # find game from DB
@@ -82,6 +77,12 @@ class Game:
                     "collected_countries": res[0][6],
                     "previous_location" : res[0][3]
                 }
+                countries = int(self.status["collected_countries"]) + 1
+                print("countries: " + str(countries))
+                sql3 = "UPDATE Game SET collected_countries='" + str(countries) + "' WHERE id='" + self.status["id"] + "'"
+                cur3 = config.conn.cursor()
+                cur3.execute(sql3)
+
                 print(self.status)
                 # old location in DB currently not used
                 apt = Airport(loc, True)
@@ -133,3 +134,7 @@ class Game:
             goal = Goal(a[0], a[1], a[2], a[3], is_reached, a[5], a[6], a[7], a[8])
             self.goals.append(goal)
         return
+
+
+def collect_countries(self):
+        sql ="UPDATE Game SET collected_countries"+ " WHERE id='" + id + "'"

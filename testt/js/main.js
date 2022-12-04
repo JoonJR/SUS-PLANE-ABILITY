@@ -20,35 +20,40 @@ const blueIcon = L.divIcon({className: 'blue-icon'})
 const greenIcon = L.divIcon({className: 'green-icon'})
 
 //timer
-document.getElementById('timer').innerHTML =
-  10 + ":" + 00;
-startTimer();
-function startTimer() {
-  var presentTime = document.getElementById('timer').innerHTML;
-  var timeArray = presentTime.split(/[:]+/);
-  var m = timeArray[0];
-  var s = checkSecond((timeArray[1] - 1));
-  if(s==59){m=m-1}
-  if(m<0){
-    return
-  }
+function timer(){
   document.getElementById('timer').innerHTML =
-    m + ":" + s;
-  console.log(m)
-  setTimeout(startTimer, 1000);
-  
+    10 + ":" + 00;
+  startTimer();
+  function startTimer() {
+    var presentTime = document.getElementById('timer').innerHTML;
+    var timeArray = presentTime.split(/[:]+/);
+    var m = timeArray[0];
+    var s = checkSecond((timeArray[1] - 1));
+    // if (m==0 && s==0) {
+    //   return 0;
+    //}
+    if(s==59){m=m-1}
+    if(m<0){
+      return
+    }
+    document.getElementById('timer').innerHTML =
+      m + ":" + s;
+    console.log(m)
+    setTimeout(startTimer, 1000);
+    
+  }
+  function checkSecond(sec) {
+    if (sec < 10 && sec >= 0) {sec = "0" + sec}; // add zero in front of numbers < 10
+    if (sec < 0) {sec = "59"};
+    return sec;
+  }
 }
-function checkSecond(sec) {
-  if (sec < 10 && sec >= 0) {sec = "0" + sec}; // add zero in front of numbers < 10
-  if (sec < 0) {sec = "59"};
-  return sec;
-}
-
 //form for player name
 document.querySelector('#player-form').addEventListener('submit', function (evt) {
   evt.preventDefault();
   const playerName = document.querySelector('#player-input').value;
   document.querySelector('#player-modal').classList.add('hide');
+  timer(); //starts the timer when the name is entered
   gameSetup(`${apiUrl}newgame?player=${playerName}&loc=${startLoc}`);
 });
 
@@ -64,7 +69,7 @@ async function getData(url){
 function updateStatus(status) {
   document.querySelector('#player-name').innerHTML = `Player: ${status.name}`;
   document.querySelector('#consumed').innerHTML = status.co2.consumed;
-  // document.querySelector('#countries').innerHTML = status.countries;
+  document.querySelector('#countries').innerHTML = status.collected_countries;
   document.querySelector('#dice').innerHTML = status.dice;
   if (status.dice === 1) {
     // alert('Oops..you died..');
@@ -118,6 +123,14 @@ function GameOver(dice) {
   }
   return true;
 }
+// function noTime(tiimer) {
+//   tiimer = timer();
+//   if (tiimer === 0) {
+//     alert(`Game Over. Time's out.`);
+//     return false;
+//   }
+//   return true;
+// }
 
 // function to set up game
 
@@ -129,6 +142,7 @@ async function gameSetup(url){
     updateStatus(gameData.status);
       if (!checkGameOver(gameData.status.co2.budget)) return;
       if (!GameOver(gameData.status.dice)) return;
+      // if (!noTime(timer())) return;
       for(let airport of gameData.location){
       const marker = L.marker([airport.latitude, airport.longitude]).addTo(map);
       if(airport.active){
