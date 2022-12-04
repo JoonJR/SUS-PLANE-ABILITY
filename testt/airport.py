@@ -25,7 +25,7 @@ class Airport:
                 self.name = res[0][1]
                 self.latitude = float(res[0][2])
                 self.longitude = float(res[0][3])
-                print(self.ident)
+                # print(self.ident)
         else:
             self.name = data['name']
             self.latitude = float(data['latitude'])
@@ -43,7 +43,7 @@ class Airport:
         sql += str(self.latitude - config.max_lat_dist) + " AND " + str(self.latitude + config.max_lat_dist)
         sql += " AND longitude_deg BETWEEN "
         sql += str(self.longitude - config.max_lon_dist) + " AND " + str(self.longitude + config.max_lon_dist)
-        print(sql)
+        # print(sql)
         cur = config.conn.cursor()
         cur.execute(sql)
         res = cur.fetchall()
