@@ -31,6 +31,7 @@ class Game:
                 "previous_location" : ""
             }
             self.location.append(Airport(loc, True))
+            icao_list.remove(loc)
 
             sql = "INSERT INTO Game VALUES ('" + self.status["id"] + "', " + str(self.status["co2"]["consumed"])
             sql += ", " + str(self.status["co2"]["budget"]) + ", '" + self.status["name"] + "', '" + loc
