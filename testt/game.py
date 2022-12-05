@@ -3,6 +3,8 @@ from airport import Airport
 from goal import Goal
 import config
 
+
+
 icao_list = ["AD-ALV", 'LATI', 'LOWW',"LQSA", 'EBBR', 'LBSF','UMMS', 'LSZB', 'LKPR', 'EDDB', 'EKCH', 'EETN', 'LEMD', 
 'EFHK', 'EKVG', 'LFPG', 'EGLL', 'EGJB', 'LXGB', 'LGAV', 'LDZA', 'LHBP','EIDW','EGNS','BIRK','LIRF','EGJJ',
 'LSXB','EYVI','ELLX','EVRA','LNMC','LUKK','LYPG','LWSK','LMML','EHAM','ENGM','EPWA','LPPT','LROP','LYBE','UUDD',
@@ -49,6 +51,10 @@ class Game:
             dice5 = int(consumption) / 2
             dice6 = int(consumption) - int(consumption)
             c = 1 
+            # last_loc = self.status["previous_location"]
+            # print(last_loc)
+
+
             ## doesnt collect previous country
             if loc in icao_list:
                 c = 1
@@ -97,11 +103,17 @@ class Game:
                     "previous_location" : res[0][3]
                 }
 
-                print(self.status)
-                # old location in DB currently not used
-                apt = Airport(loc, True)
-                self.location.append(apt)
-                self.set_location(apt)
+                if ran == 4: # dice 4, plane returns back 
+                    dice4location = Airport(self.status['previous_location'], True)
+                    self.location.append(dice4location)
+                    self.set_location(dice4location)
+
+                else:
+                    print(self.status)
+                    # old location in DB currently not used
+                    apt = Airport(loc, True)
+                    self.location.append(apt)
+                    self.set_location(apt)
 
                 
 
@@ -152,3 +164,5 @@ class Game:
 
 # def collect_countries(self):
 #         sql ="UPDATE Game SET collected_countries"+ " WHERE id='" + id + "'"
+
+
