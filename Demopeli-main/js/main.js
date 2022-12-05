@@ -9,7 +9,7 @@ L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
 map.setView([60, 24], 7);
 
 // global variables
-const apiUrl = 'http://127.0.0.1:5000/airports';
+const apiUrl = 'http://127.0.0.1:5000/';
 const startLoc = 'EFHK';
 const globalGoals = [];
 const airportMarkers = L.featureGroup().addTo(map);
@@ -78,7 +78,7 @@ function updateGoals(goals) {
     li.append(figure);
     if (goal.reached) {
       li.classList.add('done');
-      globalGoals.includes(goal.goalid) || globalGoals.push(goal.goalid);
+      globalGoals.includes(goal.goal_id) || globalGoals.push(goal.goal_id);
     }
     document.querySelector('#goals').append(li);
   }
@@ -100,7 +100,6 @@ async function gameSetup(url) {
     document.querySelector('.goal').classList.add('hide');
     airportMarkers.clearLayers();
     const gameData = await getData(url);
-    //const gameData = await getData('testdataa/newgame.json');
     console.log(gameData);
     updateStatus(gameData.status);
     if (!checkGameOver(gameData.status.co2.budget)) return;

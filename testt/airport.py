@@ -2,17 +2,8 @@ import random
 import config
 from weather import Weather
 from geopy import distance
-from flask import Flask
-from flask_cors import CORS
 import mysql.connector
-
-import config
-
-
-
-
-
-
+from country_facts import Facts
 
 
 class Airport:
@@ -24,8 +15,8 @@ class Airport:
         # vältetään kauhiaa määrää hakuja
         if data is None:
             # find airport from DB
-            sql = "SELECT ident, name, latitude_deg, longitude_deg FROM Airport WHERE ident='" + ident + "'"
-            print(sql)
+            sql = "SELECT ident, name, latitude_deg, longitude_deg, iso_country FROM Airport WHERE ident='" + ident + "'"
+            # print(sql)
             cur = config.conn.cursor()
             cur.execute(sql)
             res = cur.fetchall()
@@ -35,12 +26,15 @@ class Airport:
                 self.name = res[0][1]
                 self.latitude = float(res[0][2])
                 self.longitude = float(res[0][3])
-                print(self.ident, self.name, self.latitude, self.longitude)
+                self.iso_country = res[0][4]
+                # print(self.ident)
         else:
             self.name = data['name']
             self.latitude = float(data['latitude'])
             self.longitude = float(data['longitude'])
-            print('Else')
+
+    
+
 
     def find_nearby_airports(self):
         # print("Testing geopy...")
@@ -51,7 +45,7 @@ class Airport:
         sql += str(self.latitude - config.max_lat_dist) + " AND " + str(self.latitude + config.max_lat_dist)
         sql += " AND longitude_deg BETWEEN "
         sql += str(self.longitude - config.max_lon_dist) + " AND " + str(self.longitude + config.max_lon_dist)
-        print(sql)
+        # print(sql)
         cur = config.conn.cursor()
         cur.execute(sql)
         res = cur.fetchall()
@@ -60,17 +54,23 @@ class Airport:
                 # lisätty data, jottei jokaista kenttää tartte hakea
                 # uudestaan konstruktorissa
                 data = {'name': r[1], 'latitude': r[2], 'longitude': r[3]}
-                print(data)
+                # print(data)
                 nearby_apt = Airport(r[0], False, data)
                 nearby_apt.distance = self.distanceTo(nearby_apt)
                 if nearby_apt.distance <= config.max_distance:
                     lista.append(nearby_apt)
                     nearby_apt.co2_consumption = self.co2_consumption(nearby_apt.distance)
+                    #print (lista)
         return lista
 
     def fetchWeather(self, game):
         self.weather = Weather(self, game)
         return
+
+    def fetchData(self, game):
+        self.country_data = Facts(self, game)
+        return
+
 
     def distanceTo(self, target):
 
@@ -81,6 +81,13 @@ class Airport:
 
     def co2_consumption(self, km):
         consumption = config.co2_per_flight + km * config.co2_per_km
-        print(consumption)
         return consumption
+
+    # def country_data(self):
+    #     iso_code = self.iso_code
+    #     self.facts = Facts(self, iso_code)
+    #     return
+
+
+
 
