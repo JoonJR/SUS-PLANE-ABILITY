@@ -1,6 +1,6 @@
 import string, random
 from airport import Airport
-from goal import Goal
+# from goal import Goal
 import config
 
 
@@ -15,7 +15,7 @@ class Game:
     def __init__(self, id, loc, consumption, player=None):
         self.status = {}
         self.location = []
-        self.goals = []
+        # self.goals = []
 
         if id==0:
             # new game
