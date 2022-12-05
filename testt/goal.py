@@ -1,3 +1,5 @@
+
+
 # class Goal:
 
 #     def __init__(self, goalid, name, description, icon, reached, target, target_minvalue, target_maxvalue, target_text):
