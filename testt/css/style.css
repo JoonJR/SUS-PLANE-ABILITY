@@ -28,6 +28,9 @@
 .flex-wrap {
   display: flex;
   flex-wrap: wrap;
+  background-color: #eda132;
+
+
 }
 
 .space-evenly {
@@ -39,13 +42,9 @@
   height: auto;
 }
 
-.hide {
-  display: none;
-}
 
-.float {
-  float: left;
-}
+
+
 
 /* app specific */
 html,
@@ -67,15 +66,23 @@ body {
   background-color: var(--black);
   color: var(--white);
   padding: 1rem;
+
+
+}
+h1.font-effect-fire{
+ padding-bottom: 3rem;
+   margin: 0;
+  text-align: center;
+  font-size: 60px
 }
 
 .page-footer {
   text-align: center;
 }
 
-.page-title {
-  margin: 0;
-  text-align: center;
+.font-effect-fire{
+
+
 }
 
 ion-icon {
@@ -93,21 +100,126 @@ main {
 
 #map {
   width: 100%;
-  height: 60vh;
-  overflow: hidden;
+  height: 70vh;
+  position: relative;
+
+  }
+
+.country-facts{
+  position: absolute;
+  width: 20%;
+  top: 20px;
+  left: 20px;
+  font-size: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  z-index: 999;
+  background-color:white;
+  border-radius: 7px;
+  opacity: 50%;
+  box-shadow: rgba(0, 0, 0, 0.3) 3px 3px 10px;
+
+}
+.country-facts.fact-table{
+  text-align: right;
+}
+.weather{
+  position: absolute;
+  z-index: 999;
+  opacity: 50%;
+  border-radius: 7px;
+
+  bottom: 20px;
+  right: 20px;
+  background-color: white;
+  color: black;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-shadow: rgba(0, 0, 0, 0.3) 3px 3px 10px;
+
 }
 
-.boxes {
-  width: 100%;
+.game-stats {
+  position: absolute;
+  z-index: 999;
+  opacity: 50%;
+  border-radius: 7px;
+  left: 20px;
+  top: 220px;
+  font-size: 15px;
+  background-color: white;
+  color: black;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-shadow: rgba(0, 0, 0, 0.3) 3px 3px 10px;
+
+}
+.sidebar {
+   height: 100%;/* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+   position: fixed;/* Stay in place */
+  z-index:1000; /* Stay on top */
+  top: 0;
+  left: 0;
+  background-color: #111; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
 }
 
-.box {
-  padding: 1rem;
-  font-size: x-small;
+/* The sidebar links */
+.sidebar a {
+  padding: 5px 5px 5px 28px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
 }
 
-#map,
-.box {
+/* When you mouse over the navigation links, change their color */
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 35px;
+  margin-left: 60px;
+}
+
+/* The button used to open the sidebar */
+.openbtn {
+  font-size: 30px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 10px;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s; /* If you want a transition effect */
+  padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+#map
+ {
   border-radius: 6px;
   box-shadow: rgba(0, 0, 0, 0.3) 3px 3px 10px;
   margin-bottom: 1rem;
@@ -115,6 +227,18 @@ main {
 
 
 
+
+/* Icon styles */
+/* .blue-icon {
+  background-color: #2474ff;
+  border-radius: 50%;
+  border: 5px solid rgba(255, 255, 255, 0.5);
+}
+
+.flag-icon {
+  background-color: red;
+
+} */
 /* Icon styles */
 .blue-icon {
   background-color: #2474ff;
@@ -127,28 +251,11 @@ main {
   border-radius: 50%;
   border: 5px solid rgba(255, 255, 255, 0.5);
 }
-
-#player-modal {
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.8);
-  position: absolute;
-  top: 0;
-  z-index: 9999;
+.game-stats.header{
+ display: flex;
 }
 
-#player-form {
-  display: flex;
-  width: 50%;
-  margin: 4rem auto;
-  flex-direction: column;
-}
-
-#player-form input {
-  padding: 1rem;
-}
-
-#flag {
-  width: 2rem;
+#flag{
+  width: 3rem;
   height: 100%;
 }
