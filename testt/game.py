@@ -51,8 +51,6 @@ class Game:
             dice5 = int(consumption) / 2
             dice6 = int(consumption) - int(consumption)
             c = 1 
-            # last_loc = self.status["previous_location"]
-            # print(last_loc)
 
 
             ## doesnt collect previous country
@@ -107,6 +105,14 @@ class Game:
                     dice4location = Airport(self.status['previous_location'], True)
                     self.location.append(dice4location)
                     self.set_location(dice4location)
+                
+                elif ran == 3: #random destination works
+                    random_loc = self.random_location()
+                    dice3location = Airport(random_loc, True)
+                    self.location.append(dice3location)
+                    self.set_location(dice3location)
+          
+
 
                 else:
                     print(self.status)
@@ -114,10 +120,6 @@ class Game:
                     apt = Airport(loc, True)
                     self.location.append(apt)
                     self.set_location(apt)
-
-                
-
-
 
             else:
                 print("************** PELIÄ EI LÖYDY! ***************")
@@ -135,6 +137,21 @@ class Game:
         #config.conn.commit()
         #self.loc = sijainti.ident
 
+
+    def random_location(self):
+        sql4 = "SELECT ident FROM airport ORDER BY RAND() LIMIT 1"
+        cursor = config.conn.cursor()
+        cursor.execute(sql4)
+        result = cursor.fetchall()
+        if cursor.rowcount > 0:
+            for row in result:
+                return row[0]
+        # print(ran_loc)
+        # sql4 = "UPDATE Game SET location='" + ran_loc.ident + "' WHERE id='" + self.status["id"] + "'"
+        # cur = config.conn.cursor()
+        # cur.execute(sql4)
+        
+    
 
     # def fetch_goal_info(self):
 
