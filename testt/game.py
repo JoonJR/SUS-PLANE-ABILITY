@@ -32,8 +32,10 @@ class Game:
                 "collected_countries" : 1,
                 "previous_location" : ""
             }
-            self.location.append(Airport(loc, True))
-            icao_list.remove(loc)
+            # random location
+            starting_point = self.random_location()
+            self.location.append(Airport(starting_point, True))
+            icao_list.remove(starting_point)
 
             sql = "INSERT INTO Game VALUES ('" + self.status["id"] + "', " + str(self.status["co2"]["consumed"])
             sql += ", " + str(self.status["co2"]["budget"]) + ", '" + self.status["name"] + "', '" + loc
@@ -146,6 +148,15 @@ class Game:
         if cursor.rowcount > 0:
             for row in result:
                 return row[0]
+
+    # def starting_point(self):
+    #     sql5 = "SELECT ident FROM airport ORDER BY RAND() LIMIT 1"
+    #     cursor = config.conn.cursor()
+    #     cursor.execute(sql5)
+    #     result = cursor.fetchall()
+    #     if cursor.rowcount > 0:
+    #         for row in result:
+    #             return row[0]
        
     
 
