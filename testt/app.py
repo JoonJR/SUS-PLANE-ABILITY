@@ -34,6 +34,7 @@ def fly(id, dest, consumption=0, player=None):
     else:
         game = Game(id, dest, consumption)
     game.location[0].fetchWeather(game)
+    game.location[0].fetchData(game)
     nearby = game.location[0].find_nearby_airports()
     for a in nearby:
         game.location.append(a)

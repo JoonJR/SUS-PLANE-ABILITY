@@ -137,7 +137,7 @@ class Game:
         #config.conn.commit()
         #self.loc = sijainti.ident
 
-
+    # dice 3
     def random_location(self):
         sql4 = "SELECT ident FROM airport ORDER BY RAND() LIMIT 1"
         cursor = config.conn.cursor()
@@ -146,11 +146,7 @@ class Game:
         if cursor.rowcount > 0:
             for row in result:
                 return row[0]
-        # print(ran_loc)
-        # sql4 = "UPDATE Game SET location='" + ran_loc.ident + "' WHERE id='" + self.status["id"] + "'"
-        # cur = config.conn.cursor()
-        # cur.execute(sql4)
-        
+       
     
 
     # def fetch_goal_info(self):

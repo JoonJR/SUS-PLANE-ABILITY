@@ -3,6 +3,7 @@ import config
 from weather import Weather
 from geopy import distance
 import mysql.connector
+from country_facts import Facts
 
 
 class Airport:
@@ -14,7 +15,7 @@ class Airport:
         # vältetään kauhiaa määrää hakuja
         if data is None:
             # find airport from DB
-            sql = "SELECT ident, name, latitude_deg, longitude_deg FROM Airport WHERE ident='" + ident + "'"
+            sql = "SELECT ident, name, latitude_deg, longitude_deg, iso_country FROM Airport WHERE ident='" + ident + "'"
             # print(sql)
             cur = config.conn.cursor()
             cur.execute(sql)
@@ -25,6 +26,7 @@ class Airport:
                 self.name = res[0][1]
                 self.latitude = float(res[0][2])
                 self.longitude = float(res[0][3])
+                self.iso_country = res[0][4]
                 # print(self.ident)
         else:
             self.name = data['name']
@@ -64,6 +66,11 @@ class Airport:
     def fetchWeather(self, game):
         self.weather = Weather(self, game)
         return
+
+    def fetchData(self, game):
+        self.country_data = Facts(self, game)
+        return
+
 
     def distanceTo(self, target):
 

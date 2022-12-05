@@ -38,7 +38,7 @@ function timer(){
     }
     document.getElementById('timer').innerHTML =
       m + ":" + s;
-    console.log(m)
+    // console.log(m)
     setTimeout(startTimer, 1000);
     
   }
@@ -101,6 +101,18 @@ function showWeather(airport) {
   document.querySelector('#airport-wind').innerHTML = `${airport.weather.wind.speed}m/s`;
 }
 
+function showCountriesData(airport){
+  document.querySelector('#current-country').innerHTML = `${airport.country_data.country}`;
+  document.querySelector('#population').innerHTML = `${airport.country_data.population}`;
+  document.querySelector('#language').innerHTML = `${airport.country_data.language}`;
+  document.querySelector('#currency').innerHTML = `${airport.country_data.currency}`;
+  document.querySelector('#capital').innerHTML = `${airport.country_data.capital}`;
+  document.querySelector('#flag').src = airport.country_data.flag;
+
+  console.log(airport.country_data.flag)
+  // document.querySelector('#flag').src = `${airport.country_data.populationa}`;;
+}
+
 
 // function to check if any goals have been reached
 
@@ -147,6 +159,7 @@ async function gameSetup(url){
       const marker = L.marker([airport.latitude, airport.longitude]).addTo(map);
       if(airport.active){
         showWeather(airport);
+        showCountriesData(airport)
         marker.bindPopup(`You are here: <b>${airport.name}</b>`);
         marker.openPopup();
         marker.setIcon(greenIcon);

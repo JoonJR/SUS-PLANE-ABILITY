@@ -10,31 +10,31 @@ class Weather:
     def kelvin_to_celsius(self, kelvin):
         return int (kelvin - 273.15)
 
-    def check_weather_goals(self, game):
+    # def check_weather_goals(self, game):
 
-        for goal in game.goals:
-            if goal.target=="TEMP":
-                # temperature rule
-                if self.temp>=goal.target_minvalue and self.temp<=goal.target_maxvalue:
-                    self.meets_goals.append(goal.goalid)
-            elif goal.target=="WEATHER":
-                # weather type rule
-                if self.main==goal.target_text:
-                    self.meets_goals.append(goal.goalid)
-            elif goal.target=="WIND":
-                # wind rule
-                if self.wind["speed"]>=goal.target_minvalue and self.wind["speed"]<=goal.target_maxvalue:
-                    self.meets_goals.append(goal.goalid)
+    #     for goal in game.goals:
+    #         if goal.target=="TEMP":
+    #             # temperature rule
+    #             if self.temp>=goal.target_minvalue and self.temp<=goal.target_maxvalue:
+    #                 self.meets_goals.append(goal.goalid)
+    #         elif goal.target=="WEATHER":
+    #             # weather type rule
+    #             if self.main==goal.target_text:
+    #                 self.meets_goals.append(goal.goalid)
+    #         elif goal.target=="WIND":
+    #             # wind rule
+    #             if self.wind["speed"]>=goal.target_minvalue and self.wind["speed"]<=goal.target_maxvalue:
+    #                 self.meets_goals.append(goal.goalid)
 
-        for goal in game.goals:
-            if goal.reached==False and goal.goalid in self.meets_goals:
-                # new goal
-                sql = "INSERT INTO goalreached VALUES ('" + game.status["id"] + "', '" + str(goal.goalid)  + "')"
-                print(sql)
-                cur = config.conn.cursor()
-                cur.execute(sql)
-                goal.reached = True
-        return
+    #     for goal in game.goals:
+    #         if goal.reached==False and goal.goalid in self.meets_goals:
+    #             # new goal
+    #             sql = "INSERT INTO goalreached VALUES ('" + game.status["id"] + "', '" + str(goal.goalid)  + "')"
+    #             print(sql)
+    #             cur = config.conn.cursor()
+    #             cur.execute(sql)
+    #             goal.reached = True
+    #     return
 
 
     def __init__(self, sijainti, game):
@@ -53,5 +53,5 @@ class Weather:
             "deg": vastaus["wind"]["deg"]
         }
 
-        self.meets_goals = []
-        self.check_weather_goals(game)
+        # self.meets_goals = []
+        # self.check_weather_goals(game)
