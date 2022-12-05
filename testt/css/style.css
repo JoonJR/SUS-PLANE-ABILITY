@@ -147,3 +147,8 @@ main {
 #player-form input {
   padding: 1rem;
 }
+
+#flag {
+  width: 2rem;
+  height: 100%;
+}
