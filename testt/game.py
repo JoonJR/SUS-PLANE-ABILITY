@@ -32,6 +32,7 @@ class Game:
                 "collected_countries" : 1,
                 "previous_location" : ""
             }
+            # random location
             starting_point = self.random_location()
             self.location.append(Airport(starting_point, True))
             icao_list.remove(starting_point)
