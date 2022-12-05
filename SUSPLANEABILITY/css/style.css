@@ -161,7 +161,7 @@ main {
    position: fixed;/* Stay in place */
   z-index:1000; /* Stay on top */
   top: 0;
-  left: 0;
+  right: 0;
   background-color: #111; /* Black*/
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 60px; /* Place content 60px from the top */
@@ -187,9 +187,9 @@ main {
 .sidebar .closebtn {
   position: absolute;
   top: 0;
-  right: 25px;
+  right: 10px;
   font-size: 35px;
-  margin-left: 60px;
+  margin-right: 30px;
 }
 
 /* The button used to open the sidebar */
@@ -198,7 +198,7 @@ main {
   cursor: pointer;
   background-color: #111;
   color: white;
-  padding: 10px 15px;
+  padding: 10px 15px ;
   border: none;
   border-radius: 10px;
 }
@@ -209,7 +209,7 @@ main {
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
-  transition: margin-left .5s; /* If you want a transition effect */
+  transition: margin-right     .5s; /* If you want a transition effect */
   padding: 20px;
 }
 
