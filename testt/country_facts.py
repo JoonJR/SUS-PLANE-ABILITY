@@ -5,8 +5,8 @@ load_dotenv()
 
 
 class Facts:
-    def __init__(self, sijainti, game):
-        request = "https://restcountries.com/v2/alpha/" + str(sijainti.iso_country)
+    def __init__(self, location, game):
+        request = "https://restcountries.com/v2/alpha/" + str(location.iso_country)
         response = requests.get(request)
         json_response = response.json()
         self.country = json_response["name"]

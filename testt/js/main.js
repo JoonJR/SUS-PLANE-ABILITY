@@ -116,7 +116,6 @@ function showCountriesData(airport){
 }
 
 
-// function to check if any goals have been reached
 
 
 // function to check if game is over
