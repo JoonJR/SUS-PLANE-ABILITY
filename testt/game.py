@@ -1,6 +1,5 @@
 import string, random
 from airport import Airport
-# from goal import Goal
 import config
 
 
@@ -15,7 +14,6 @@ class Game:
     def __init__(self, id, loc, consumption, player=None):
         self.status = {}
         self.location = []
-        # self.goals = []
 
         if id==0:
             # new game
@@ -124,21 +122,15 @@ class Game:
                     self.set_location(apt)
 
             else:
-                print("************** PELIÄ EI LÖYDY! ***************")
-
-        # read game's goals
-        # self.fetch_goal_info()
+                print("game is not found!")
 
 
-    def set_location(self, sijainti):
-        #self.location = sijainti
-        sql = "UPDATE Game SET location='" + sijainti.ident + "' WHERE id='" + self.status["id"] + "'"
-        # print(sql)
+    def set_location(self, location):
+ 
+        sql = "UPDATE Game SET location='" + location.ident + "' WHERE id='" + self.status["id"] + "'"
         cur = config.conn.cursor()
         cur.execute(sql)
-        #config.conn.commit()
-        #self.loc = sijainti.ident
-
+   
     # dice 3
     def random_location(self):
         sql4 = "SELECT ident FROM airport ORDER BY RAND() LIMIT 1"
@@ -148,45 +140,4 @@ class Game:
         if cursor.rowcount > 0:
             for row in result:
                 return row[0]
-
-    # def starting_point(self):
-    #     sql5 = "SELECT ident FROM airport ORDER BY RAND() LIMIT 1"
-    #     cursor = config.conn.cursor()
-    #     cursor.execute(sql5)
-    #     result = cursor.fetchall()
-    #     if cursor.rowcount > 0:
-    #         for row in result:
-    #             return row[0]
-       
-    
-
-    # def fetch_goal_info(self):
-
-    #     sql = "SELECT * FROM (SELECT Goal.id, Goal.name, Goal.description, Goal.icon, goalreached.gameid, "
-    #     sql += "Goal.target, Goal.target_minvalue, Goal.target_maxvalue, Goal.target_text "
-    #     sql += "FROM Goal INNER JOIN goalreached ON Goal.id = goalreached.goalid "
-    #     sql += "WHERE goalreached.gameid = '" + self.status["id"] + "' "
-    #     sql += "UNION SELECT Goal.id, Goal.name, Goal.description, Goal.icon, NULL, "
-    #     sql += "Goal.target, Goal.target_minvalue, Goal.target_maxvalue, Goal.target_text "
-    #     sql += "FROM Goal WHERE Goal.id NOT IN ("
-    #     sql += "SELECT Goal.id FROM Goal INNER JOIN goalreached ON Goal.id = goalreached.goalid "
-    #     sql += "WHERE goalreached.gameid = '" + self.status["id"] + "')) AS t ORDER BY t.id;"
-
-        # print(sql)
-        # cur = config.conn.cursor()
-        # cur.execute(sql)
-        # res = cur.fetchall()
-        # for a in res:
-        #     if a[4]==self.status["id"]:
-        #         is_reached = True
-        #     else:
-        #         is_reached = False
-        #     goal = Goal(a[0], a[1], a[2], a[3], is_reached, a[5], a[6], a[7], a[8])
-        #     self.goals.append(goal)
-        # return
-
-
-# def collect_countries(self):
-#         sql ="UPDATE Game SET collected_countries"+ " WHERE id='" + id + "'"
-
 

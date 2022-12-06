@@ -34,12 +34,12 @@
 
         <script>     function openNav() {
   document.getElementById("mySidebar").style.width = "250px";
-  document.getElementById("main").style.marginRight = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
 }
 
 function closeNav() {
   document.getElementById("mySidebar").style.width = "0";
-  document.getElementById("main").style.marginRight = "0";
+  document.getElementById("main").style.marginLeft = "0";
 
 }</script>
 
@@ -50,11 +50,12 @@ function closeNav() {
         </h1>
     </header>
 </div>
+
+
     <main class="flex-wrap">
         <div id="map">
            <!-- <img src="img/eumap.jpg" alt="eu map"> -->
-
-              <div class="box">
+            <div class="box">
                 <div class="country-facts">
                 <header>
                     <h2>Country facts</h2>
@@ -64,36 +65,26 @@ function closeNav() {
                         <td>Current country: <span id="current-country">Spain</span></td>
                     </tr>
                     <tr>
+                        <td>Capital: <span id="capital">Madrid</span></td>
                         <td>Population: <span id="population">1503020</span></td>
-                         </tr>
-                        <tr><td>Language: <span id="language">Spanish</span></td></tr>
-                        <tr><td>Currency: <span id="currency">€</span></td></tr>
-                        <tr><td>Flag: <span id="flag"><ion-icon name="flag-outline"></ion-icon></span></td></tr>
+                        <td>Language: <span id="language">Spanish</span></td>
+                        <td>Currency: <span id="currency">€</span></td>
+                        <td>Flag:<img id="flag" src=""  alt="flag picture"></td></tr>
 
                 </table>
                     </div>
-                </div>
-            <div class="box">
-                <div class="weather">
-                    <table>
-                    <tr>
-                        <td><h6>Temperature</h6></td>
-                        <td>
-                            <img id="weather-icon" src="https://openweathermap.org/img/wn/10d@2x.png"  alt="Current weather">
-                        </td>
-                        <td><h6>Wind</h6></td>
-                    </tr>
-                    <tr>
-                        <td id="airport-temp">10°C</td>
-                        <td id="airport-conditions">Cloudy</td>
-                        <td id="airport-wind">30m/s</td>
-                    </tr>
-                        </table>
+                <div class="box">
+            <div class="weather">
+                <table>
+                    <td>
+                        <img id="weather-icon" src="https://openweathermap.org/img/wn/10d@2x.png" alt="current weather">
+                    </td>
+                    <td><span id="airport-temp"><b>10°C</b></span></td>
+                </table>
                 </div>
 
             </div>
-
-
+            </div>
             <div class="box">
                 <div class="game-stats">
                 <header class="header">
@@ -102,30 +93,35 @@ function closeNav() {
                 <table>
                     <tr>
                         <td colspan="2">
-                            <h5 id="player-name">Player name</h5></td>
+                            <h3 id="player-name">Player Name</h3>
+                        </td>
                     </tr>
                     <tr>
-                        <td><span id="timer">10:00</span></td></tr>
-                        <tr><td>Countries: <span id="countries">7</span>/50</td></tr>
-                        <tr><td>Co2 status <span id="consumed">9999</span>/10000kg</td></tr>
-                        <tr><td>Dice: <span id="dice">3</span></td>
+                        <td><span id="timer">10:00</span></td>
+                        
+                        <td>Countries: <span id="countries">0</span>/50</td>
+                        <td>Co2 status <span id="consumed">0</span>/10000kg</td>
+                        <td>Dice: <span id="dice">3</span></td>
 
                 </table>
                  </div>
             </div>
-          </div>
+        </div>
+
     </main>
+    <div class="container">
+
+        </div>
+    <footer class="page-footer">
+        <p> &copy; SUS(PLANE)ABILITY </p>
+    </footer>
+</div>
+
 <div id="player-modal">
     <form id="player-form">
         <input id="player-input" type="text" placeholder="Player name" required>
         <input type="submit" value="Start game">
     </form>
-    <footer class="page-footer">
-        <p>SUS(PLANE)ABILITY Made by Group 2.</p>
-    </footer>
-</div>
-
-
 </div>
 </body>
 
