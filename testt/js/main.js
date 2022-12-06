@@ -97,8 +97,8 @@ function showWeather(airport) {
   // document.querySelector('#airport-name').innerHTML = `Weather at ${airport.name}`;
   document.querySelector('#airport-temp').innerHTML = `${airport.weather.temp}°C`;
   document.querySelector('#weather-icon').src = airport.weather.icon;
-  document.querySelector('#airport-conditions').innerHTML = airport.weather.description;
-  document.querySelector('#airport-wind').innerHTML = `${airport.weather.wind.speed}m/s`;
+  // document.querySelector('#airport-conditions').innerHTML = airport.weather.description;
+  // document.querySelector('#airport-wind').innerHTML = `${airport.weather.wind.speed}m/s`;
 }
 
 function showCountriesData(airport){
