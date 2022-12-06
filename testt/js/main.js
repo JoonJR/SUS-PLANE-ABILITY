@@ -72,7 +72,9 @@ function updateStatus(status) {
   document.querySelector('#countries').innerHTML = status.collected_countries;
   document.querySelector('#dice').innerHTML = status.dice;
   if (status.dice === 1) {
-    alert('Oops..you died..'); // doesnt do anything yet
+    alert('Oops..you died..');
+    // const playerName = document.querySelector('#player-input').value;
+      window.location.reload();
     
   }
   if (status.dice === 2) {
@@ -116,35 +118,30 @@ function showCountriesData(airport){
 
 // function to check if any goals have been reached
 
-// function to update goal data and goal table in UI
-// function updateGoals(goals){
 
-// }
 // function to check if game is over
 function checkGameOver(budget) {
-  if (budget <= 0) {
-    alert(`Game Over. ${globalGoals.length} goals reached.`);
+  if (budget <= 0 || dice === 1) {
+    alert(`Game Over.`);
+    console.log('you died')
+    window.location.reload();
     return false;
-  }
-  return true;
-}
-function GameOver(dice) {
-  if (dice === 1) {
-    alert(`Game Over. You plane crashed.`);
-    return false;
-  }
-  return true;
-}
-// function noTime(tiimer) {
-//   tiimer = timer();
-//   if (tiimer === 0) {
-//     alert(`Game Over. Time's out.`);
-//     return false;
-//   }
-//   return true;
-// }
 
-// function to set up game
+  }
+  console.log("youre alive")
+  return true;
+}
+
+function checkGameOverDice(dice) {
+  if (dice === 1) {
+    alert(`Game Over.`);
+    console.log('you died')
+    return false;
+
+  }
+  console.log("youre alive")
+  return true;
+}
 
 // this is the main function that creates the game and calls the other functions
 async function gameSetup(url){
@@ -152,8 +149,8 @@ async function gameSetup(url){
     const gameData = await getData(url);
     console.log(gameData);
     updateStatus(gameData.status);
-      // if (!checkGameOver(gameData.status.co2.budget)) return;
-      // if (!GameOver(gameData.status.dice)) return;
+      if (!checkGameOver(gameData.status.co2.budget)) return;
+      if (!checkGameOverDice(gameData.status.dice)) return;
       // if (!noTime(timer())) return;
       for(let airport of gameData.location){
       const marker = L.marker([airport.latitude, airport.longitude]).addTo(map);
@@ -189,4 +186,3 @@ async function gameSetup(url){
 }
 
 // gameSetup(apiUrl);
-// event listener to hide goal splash
