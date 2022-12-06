@@ -117,25 +117,31 @@ function showCountriesData(airport){
 
 // function to check if game is over
 function checkGameOver(budget) {
-  if (budget <= 0 || dice === 1) {
-    alert(`Game Over.`);
-    console.log('you died')
+  if (budget <= 0) {
+    alert(`Game Over. You ran out of CO2 budget`)
     window.location.reload();
     return false;
 
   }
-  console.log("youre alive")
   return true;
 }
 
 function checkGameOverDice(dice) {
   if (dice === 1) {
-    alert(`Game Over.`);
-    console.log('you died')
+    alert(`Game Over. You're dead`);
+    window.location.reload();
     return false;
 
   }
-  console.log("youre alive")
+  return true;
+}
+
+function checkGameOverCountries(countries) {
+  if (countries === 2) {
+    alert(`You collected all the countries!`);
+    window.location.reload();
+    return false;
+  }
   return true;
 }
 
@@ -147,6 +153,7 @@ async function gameSetup(url){
     updateStatus(gameData.status);
       if (!checkGameOver(gameData.status.co2.budget)) return;
       if (!checkGameOverDice(gameData.status.dice)) return;
+      if (!checkGameOverCountries(gameData.status.collected_countries)) return;
       // if (!noTime(timer())) return;
       for(let airport of gameData.location){
       const marker = L.marker([airport.latitude, airport.longitude]).addTo(map);
