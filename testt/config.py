@@ -15,7 +15,6 @@ collected_countries = 0
 
 default_starting_point = "EPWA"
 default_name = "Anna"
-
 # Internal shared variables -- do not modify
 conn = None
 

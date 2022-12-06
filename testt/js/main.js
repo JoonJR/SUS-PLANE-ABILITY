@@ -115,9 +115,6 @@ function showCountriesData(airport){
   // document.querySelector('#flag').src = `${airport.country_data.populationa}`;;
 }
 
-
-
-
 // function to check if game is over
 function checkGameOver(budget) {
   if (budget <= 0 || dice === 1) {
