@@ -265,3 +265,23 @@ main {
   width: 3rem;
   height: 100%;
 }
+
+#player-form{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+  background-color: #01011a;
+}
+input[type=submit]{
+  background-color: #ff2a6d;
+  border: white;
+  height: 40px;
+  width: 122px;
+}
+input[type=text]{
+  border-color: #ff2a6d;
+  color: #05d9e8;
+  background-color: #01012b;
+  height: 40px;
+  width: 40%;
+}
