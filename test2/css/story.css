@@ -208,7 +208,7 @@ h1.font-effect-fire{
     transform: translate(-50%, -50%);
     opacity: 0;
     z-index: 2;
-    animation: logo 5s ease-out 5s;
+    animation: logo 6s ease-out 5s;
 }
 @keyframes logo {
       0% {
@@ -254,7 +254,7 @@ p{
 #content{
     position:absolute;
     top:100%;
-    animation:scroller 50s linear 5s;
+    animation:scroller 100s linear 5s;
 }
 @keyframes scroller {
     0% {
