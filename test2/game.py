@@ -4,7 +4,7 @@ import config
 
 
 
-icao_list = ["AD-ALV", 'LATI', 'LOWW',"LQSA", 'EBBR', 'LBSF','UMMS', 'LSZB', 'LKPR', 'EDDB', 'EKCH', 'EETN', 'LEMD', 
+icao_list = ["AD-ALV", 'LATI', 'LOWW',"LQSA", 'EBBR', 'LBSF','UMMS', 'LSZB', 'LKPR', 'EDDB', 'EKCH', 'EETN', 'LEMD',
 'EFHK', 'EKVG', 'LFPG', 'EGLL', 'EGJB', 'LXGB', 'LGAV', 'LDZA', 'LHBP','EIDW','EGNS','BIRK','LIRF','EGJJ',
 'LSXB','EYVI','ELLX','EVRA','LNMC','LUKK','LYPG','LWSK','LMML','EHAM','ENGM','EPWA','LPPT','LROP','LYBE','UUDD',
 'ESSA','LJLJ','LZIB','LIKD','UKKK','VA-0001','BKPR']
@@ -15,20 +15,20 @@ class Game:
         self.status = {}
         self.location = []
 
-        if id==0:
+        if id == 0:
             # new game
             letters = string.ascii_lowercase + string.ascii_uppercase + string.digits
 
             self.status = {
-                "id" : ''.join(random.choice(letters)for i in range(20)),
-                "name" : player,
-                "co2" : {
-                    "consumed" : config.co2_initial,
-                    "budget" : config.co2_budget
+                "id": ''.join(random.choice(letters)for i in range(20)),
+                "name": player,
+                "co2": {
+                    "consumed": config.co2_initial,
+                    "budget": config.co2_budget
                 },
-                "dice" :0,
-                "collected_countries" : 1,
-                "previous_location" : ""
+                "dice": 0,
+                "collected_countries": 1,
+                "previous_location": ""
             }
             # random location
             starting_point = self.random_location()
@@ -45,7 +45,7 @@ class Game:
 
         else:
             #update consumption, dice and budget
-            ran = random.randint(1,6)
+            ran = random.randint(1, 6)
             sql2 = ""
             dice2 = int(consumption) * 2
             dice5 = int(consumption) / 2
@@ -60,6 +60,7 @@ class Game:
                 cur3 = config.conn.cursor()
                 cur3.execute(sql3)
                 icao_list.remove(loc)
+                print(icao_list)
             else:
                 sql3 = "UPDATE Game SET collected_countries = collected_countries" + " WHERE id='" + id + "'"
                 cur3 = config.conn.cursor()
