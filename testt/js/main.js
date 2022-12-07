@@ -74,13 +74,11 @@ async function getData(url){
 }
 // function to update game status
 function updateStatus(status) {
-  document.querySelector('#player-name').innerHTML = `Player: ${status.name}`;
-  document.querySelector('#consumed').innerHTML = `CO2: ${status.co2.consumed}/10000`;
-  document.querySelector('#countries').innerHTML = `Countries: ${status.collected_countries}/50`
-  document.querySelector('#dice').innerHTML = `Dice: ${status.dice}`;
+  document.querySelector('#player-name').innerHTML = `${status.name}`;
+  document.querySelector('#consumed').innerHTML = `${status.co2.consumed}`;
+  document.querySelector('#countries').innerHTML = `${status.collected_countries}`
+  document.querySelector('#dice').innerHTML = `${status.dice}`;
   if (status.dice === 1) {
-    alert('Oops..you died..');
-      window.location.reload();
     
   }
   if (status.dice === 2) {
@@ -119,7 +117,11 @@ function showCountriesData(airport){
 // functions to check if game is over
 function checkGameOver(budget) {
   if (budget <= 0) {
-    alert(`Game Over. You ran out of CO2 budget`)
+    document.getElementById("map").style.filter = "hue-rotate(200deg)"
+      setTimeout(function() { // message will appear after 2 sec 
+        alert("You ran out of the CO2 budget and caused even worse pollution. Game over!");
+        window.location.reload();
+      },2)
     window.location.reload();
     return false;
 
