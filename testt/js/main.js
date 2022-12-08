@@ -1,5 +1,4 @@
 // 'use strict';
-/* 1. show map using Leaflet library. (L comes from the Leaflet library) */
 
 const map = L.map('map', {tap: false});
 L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
@@ -8,12 +7,6 @@ L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
   subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
 }).addTo(map);
 map.setView([60, 24], 7);
-
-// var Thunderforest_TransportDark = L.tileLayer('https://{s}.tile.thunderforest.com/transport-dark/{z}/{x}/{y}.png?apikey={apikey}', {
-// 	attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-// 	apikey: '<your apikey>',
-// 	maxZoom: 22
-// });
 
 // global variables
 const apiUrl = 'http://127.0.0.1:5000/';
@@ -38,28 +31,34 @@ const greenIcon = L.divIcon({className: 'green-icon'})
     if(m<0){
       return
     }
-    if (m ==0 && s ==0){
+    if (m ==0 && s ==0){ //time runs out
       document.getElementById("map").style.filter = "hue-rotate(200deg)"
       setTimeout(function() { // message will appear after 2 sec 
-        alert("Times out! You couldn't save the earth in time..");
-        window.location.reload();
+        document.getElementById("death").style.display = "flex";
+        document.getElementById("death-text").innerHTML = "Times out! You were too slow."
+        oki.addEventListener("click", function() {
+      window.location.reload();
+    });
       },2)
     }
     document.getElementById('timer').innerHTML = m + ":" + s;
     setTimeout(startTimer, 1000);
   }
   function checkSecond(sec) {
-    if (sec < 10 && sec >= 0) {sec = "0" + sec}; // add zero in front of numbers < 10
+    if (sec < 10 && sec >= 0) {sec = "0" + sec}; 
     if (sec < 0) {sec = "59"};
     return sec;
   }
   }
 
-//form for player name
+//start the game/form
+document.querySelector("#start").addEventListener("click", function() {
+document.getElementById("player-modal").style.display = "flex"});
 document.querySelector('#player-form').addEventListener('submit', function (evt) {
   evt.preventDefault();
   const playerName = document.querySelector('#player-input').value;
-  document.querySelector('#player-modal').classList.add('hide');
+  document.getElementById("player-modal").style.display = "none"
+
   timer(); //starts the timer when the name is entered
   gameSetup(`${apiUrl}newgame?player=${playerName}&loc=${startLoc}`);
 });
@@ -78,23 +77,67 @@ function updateStatus(status) {
   document.querySelector('#consumed').innerHTML = `${status.co2.consumed}`;
   document.querySelector('#countries').innerHTML = `${status.collected_countries}`
   document.querySelector('#dice').innerHTML = `${status.dice}`;
+  const oki = document.getElementById('oki');
+  const customAlert = document.getElementById("custom-alert");
+  const customAlerttitle = document.getElementById('custom-alert-title');
+  const custumAlerttext = document.getElementById('custom-alert-text');
+ 
   if (status.dice === 1) {
-    
+    let chance =(Math.floor(Math.random() * 2) + 1); //increases chances of surviving
+    if (chance === 1){
+      status.dice === 1;
+    }
+    else {
+      status.dice != 1;
+      customAlerttitle.innerHTML = "Dice 1";
+      custumAlerttext.innerHTML = "You nearly died.";
+      customAlert.style.display = "flex";
+      oki.addEventListener("click", function() {
+        customAlert.style.display = "none";
+    });
+    }
   }
+
   if (status.dice === 2) {
-    alert('You had to take an unexpected detour. Double the amount of Co2 consumed.');
+    customAlerttitle.innerHTML = "Dice 2";
+    custumAlerttext.innerHTML = "You had to take an unexpected detour. Double the amount of Co2 consumed.";
+    customAlert.style.display = "flex";
+    oki.addEventListener("click", function() {
+      customAlert.style.display = "none";
+    });
   }
   if (status.dice === 3) {
-    alert(' Your planes GPS breaks and you ended up somewhere else.');
+    customAlerttitle.innerHTML = "Dice3";
+    custumAlerttext.innerHTML = "Your planes GPS breaks and you ended up somewhere else.";
+    customAlert.style.display = "flex";
+    oki.addEventListener("click", function() {
+      customAlert.style.display = "none";
+    });
   }
   if (status.dice === 4) {
-    alert('Your plane had to return to the previous airport. Full amount of Co2 wasted for that trip.');
+    customAlerttitle.innerHTML = "Dice 4";
+    custumAlerttext.innerHTML = "Your plane had to return to the previous airport. Full amount of Co2 wasted for that trip.";
+    customAlert.style.display = "flex";
+    oki.addEventListener("click", function() {
+      customAlert.style.display = "none";
+    });
+
   }
   if (status.dice === 5) {
-    alert('You got a 50% Co2 refund for this flight.');
+    customAlerttitle.innerHTML = "Dice 5";
+    custumAlerttext.innerHTML = "You got a 50% Co2 refund for this flight.";
+    customAlert.style.display = "flex";
+    oki.addEventListener("click", function() {
+      customAlert.style.display = "none";
+    });
   }
   if (status.dice === 6) {
-    alert('You got a full Co2 refund for this flight.');
+    customAlerttitle.innerHTML = "Dice 6";
+    custumAlerttext.innerHTML = "You got a full Co2 refund for this flight.";
+    customAlert.style.display = "flex";
+    oki.addEventListener("click", function() {
+      customAlert.style.display = "none";
+    });
   }
   console.log(status.dice);
 }
@@ -103,7 +146,7 @@ function showWeather(airport) {
   document.querySelector('#airport-temp').innerHTML = `${airport.weather.temp}°C`;
   document.querySelector('#weather-icon').src = airport.weather.icon;
 }
-
+// function to show countries info
 function showCountriesData(airport){
   document.querySelector('#current-country').innerHTML = `${airport.country_data.country}`;
   document.querySelector('#population').innerHTML = `${airport.country_data.population}`;
@@ -114,32 +157,39 @@ function showCountriesData(airport){
 
 }
 
-// functions to check if game is over
+// functions to check if the player went over the budget
 function checkGameOver(budget) {
   if (budget <= 0) {
-    document.getElementById("map").style.filter = "hue-rotate(200deg)"
-      setTimeout(function() { // message will appear after 2 sec 
-        alert("You ran out of the CO2 budget and caused even worse pollution. Game over!");
-        window.location.reload();
-      },2)
-    window.location.reload();
+  document.getElementById("custom-alert").style.display ="none"
+  document.getElementById("map").style.filter = "hue-rotate(200deg)"
+
+  setTimeout(function() { // message will appear after 2 sec 
+    document.getElementById("death").style.display = "flex";
+    document.getElementById("death-text").innerHTML = "You went over the budget and caused even worse pollution. Good job!."
+    document.getElementById("oks").addEventListener("click", function() {
+    window.location.reload(); 
+    });
+  },2)
+    // window.location.reload();
     return false;
 
   }
   return true;
 }
-
+// functions to check if the death dice was rolled
 function checkGameOverDice(dice) {
   if (dice === 1) {
-    alert(`Game Over. You're dead`);
-    window.location.reload();
+    document.getElementById("death").style.display = "flex";
+        document.getElementById("death-text").innerHTML = "Dice 1. Your plane crashed. Unlucky."
+        oki.addEventListener("click", function() {
+      window.location.reload(); });
     return false;
 
   }
   return true;
 }
-
-function checkGameOverCountries(countries) {
+// function to check the amount of countries collected
+function checkCountries(countries) {
     if (countries === 10){
       document.getElementById("map").style.filter = "hue-rotate(96deg)"
       document.querySelector('#purification').innerHTML = "Purification: " + 20 + "%"
@@ -158,6 +208,7 @@ function checkGameOverCountries(countries) {
     }
     if (countries === 50){
       document.getElementById("map").style.filter = "hue-rotate(0deg)"
+
       document.querySelector('#purification').innerHTML = "Purification: " + 100 + "%"
     }
   
@@ -176,7 +227,7 @@ async function gameSetup(url){
     updateStatus(gameData.status);
       if (!checkGameOver(gameData.status.co2.budget)) return;
       if (!checkGameOverDice(gameData.status.dice)) return;
-      if (!checkGameOverCountries(gameData.status.collected_countries)) return;
+      if (!checkCountries(gameData.status.collected_countries)) return;
       
       for(let airport of gameData.location){
       const marker = L.marker([airport.latitude, airport.longitude]).addTo(map);
@@ -210,3 +261,7 @@ async function gameSetup(url){
     console.log(error);
   }
 }
+
+//end game
+document.getElementById('stop').addEventListener("click", function() {
+  window.location.reload();;})
