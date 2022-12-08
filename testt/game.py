@@ -3,20 +3,24 @@ from airport import Airport
 import config
 
 
-
 icao_list = ["AD-ALV", 'LATI', 'LOWW',"LQSA", 'EBBR', 'LBSF','UMMS', 'LSZB', 'LKPR', 'EDDB', 'EKCH', 'EETN', 'LEMD', 
-'EFHK', 'EKVG', 'LFPG', 'EGLL', 'EGJB', 'LXGB', 'LGAV', 'LDZA', 'LHBP','EIDW','EGNS','BIRK','LIRF','EGJJ',
-'LSXB','EYVI','ELLX','EVRA','LNMC','LUKK','LYPG','LWSK','LMML','EHAM','ENGM','EPWA','LPPT','LROP','LYBE','UUDD',
-'ESSA','LJLJ','LZIB','LIKD','UKKK','VA-0001','BKPR']
+        'EFHK', 'EKVG', 'LFPG', 'EGLL', 'EGJB', 'LXGB', 'LGAV', 'LDZA', 'LHBP','EIDW','EGNS','BIRK','LIRF','EGJJ',
+        'LSXB','EYVI','ELLX','EVRA','LNMC','LUKK','LYPG','LWSK','LMML','EHAM','ENGM','EPWA','LPPT','LROP','LYBE','UUDD',
+        'ESSA','LJLJ','LZIB','LIKD','UKKK','VA-0001','BKPR']
+visited_places =[]
+# s
 
 class Game:
 
     def __init__(self, id, loc, consumption, player=None):
         self.status = {}
         self.location = []
+        
 
         if id==0:
             # new game
+            icao_list.extend(visited_places) #fills up the first list again with removed locations
+            visited_places.clear() 
             letters = string.ascii_lowercase + string.ascii_uppercase + string.digits
 
             self.status = {
@@ -30,10 +34,17 @@ class Game:
                 "collected_countries" : 1,
                 "previous_location" : ""
             }
-            # random location
+                
+            # random starting location
             starting_point = self.random_location()
             self.location.append(Airport(starting_point, True))
+            visited_places.append(starting_point) #appends already visited countries
             icao_list.remove(starting_point)
+            # print('first')
+            # print(len(new_game))
+            # print(new_game)
+            # print(len(icao_list))
+            # print(icao_list)
 
             sql = "INSERT INTO Game VALUES ('" + self.status["id"] + "', " + str(self.status["co2"]["consumed"])
             sql += ", " + str(self.status["co2"]["budget"]) + ", '" + self.status["name"] + "', '" + loc
@@ -59,7 +70,13 @@ class Game:
                 sql3 = "UPDATE Game SET collected_countries = collected_countries +" + str(c) + " WHERE id='" + id + "'"
                 cur3 = config.conn.cursor()
                 cur3.execute(sql3)
+                visited_places.append(loc)
                 icao_list.remove(loc)
+                # print("second ")
+                # print(len(new_game))
+                # print(new_game)
+                # print(len(icao_list))
+                # print(icao_list)
             else:
                 sql3 = "UPDATE Game SET collected_countries = collected_countries" + " WHERE id='" + id + "'"
                 cur3 = config.conn.cursor()
