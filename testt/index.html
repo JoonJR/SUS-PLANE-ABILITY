@@ -32,7 +32,8 @@
     <a href="rules.html">Rules</a>
     </div>
 
-
+<button id="stop">X</button>
+   
   <button class="openbtn" onclick="openNav()">&#9776;</button>
 
 
@@ -54,33 +55,30 @@ function closeNav() {
         </h1>
     </header>
 </div>
-<div id="player-modal">
-    <form id="player-form">
-        <input id="player-input" type="text" placeholder="Player name" required>
-        <input type="submit" value="Start game">
-    </form>
+<div class="start-game">
+    <button id="start">PLAY</button>
 </div>
+
 <div class="boox">
     <figure id="meh">
     <div class="game-stats">
     <table id ="status-bar">
         <tr>
             <td>Player: <span id="player-name">-</span></td>
-            <td>Timer:<span id="timer">00:00</span></td>
+            <td>Dice: <span id="dice">0</span></td>
             <td>Countries: <span id="countries">0</span>/50</td>
+            <td>Timer:<span id="timer">00:00</span></td>
             <td>CO2 status: <span id="consumed">0</span>/10000kg</td>
             <td>Purification: <span id = "purification">0%</span>
-            <td>Dice: <span id="dice">0</span></td>
             </table>
 </div>
      
-<div id="map"></div>
+
+<div id="map">
+</div>
+
 <div class="country-facts">
-    <!-- <header>
-        <h2>Country facts</h2>
-    </header> -->
     <table class="fact-table">
-     
         <tr>
             <td>Current country: <span id="current-country">Spain</span></td>
             <td>Capital: <span id="capital">Madrid</span></td>
@@ -94,22 +92,6 @@ function closeNav() {
     </figure>
     <main class="flex-wrap">
             <div class="box">
-                <!-- <div class="country-facts">
-                <header>
-                    <h2>Country facts</h2>
-                </header>
-                <table class="fact-table">
-                 
-                    <tr>
-                        <td>Current country: <span id="current-country">Spain</span></td>
-                        <td>Capital: <span id="capital">Madrid</span></td>
-                        <td>Population: <span id="population">1503020</span></td>
-                        <td>Language: <span id="language">Spanish</span></td>
-                        <td>Currency: <span id="currency">€</span></td>
-                        <td>Flag:<span id ='flagg'><img id="flag" src=""  alt="flag picture"></span></td></tr>
-
-                </table>
-                    </div> -->
             <div class="weather">
                 <table>
                     <td>
@@ -118,8 +100,26 @@ function closeNav() {
                     <td><span id="airport-temp"><b>10°C</b></span></td>
                 </table>
                 </div>
-         
-
+                <div id="player-modal">
+                    <form id="player-form">
+                        <input id="player-input" type="text" placeholder="Player name" required>
+                        <input type="submit" value="Start game">
+                    </form>
+                </div>
+                <div class ='custom-alert-box'>
+                    <figure id="custom-alert">
+                        <h3 id ='custom-alert-title'>DICE 1</h3>
+                        <p id ='custom-alert-text'>You died</p>
+                        <button id="oki">OK</button>
+                    </figure>
+                </div>
+                <div class ='death-window'>
+                    <figure id="death">
+                        <h3 id ='death-title'>GAME OVER!</h3>
+                        <p id ='death-text'>You went over the budget and destroyed the world..good job</p>
+                        <button id="oks">OK</button>
+                    </figure>
+                </div>
             </div>
             </div>
            
