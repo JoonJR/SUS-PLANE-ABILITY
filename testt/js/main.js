@@ -36,7 +36,7 @@ const greenIcon = L.divIcon({className: 'green-icon'})
       setTimeout(function() { // message will appear after 2 sec 
         document.getElementById("death").style.display = "flex";
         document.getElementById("death-text").innerHTML = "Times out! You were too slow."
-        oki.addEventListener("click", function() {
+        oks.addEventListener("click", function() {
       window.location.reload();
     });
       },2)
@@ -181,7 +181,7 @@ function checkGameOverDice(dice) {
   if (dice === 1) {
     document.getElementById("death").style.display = "flex";
         document.getElementById("death-text").innerHTML = "Dice 1. Your plane crashed. Unlucky."
-        oki.addEventListener("click", function() {
+        oks.addEventListener("click", function() {
       window.location.reload(); });
     return false;
 
