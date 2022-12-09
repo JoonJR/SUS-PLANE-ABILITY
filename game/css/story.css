@@ -310,7 +310,7 @@ p{
 #content{
     position:absolute;
     top:100%;
-    animation:scroller 100s linear 5s;
+    animation:scroller 200s linear 5s;
 }
 @keyframes scroller {
     0% {
