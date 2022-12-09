@@ -57,7 +57,9 @@ body {
 .page-footer {
   padding-bottom: 1rem;
   background-color: #01011a;
-
+  text-align: center;
+  color: #99dee3;
+  padding-top: 1rem;
 }
 h1.font-effect-fire{
  padding-bottom: 3rem;
@@ -69,11 +71,7 @@ h1.font-effect-fire{
   
   
 }
-.page-footer {
-  text-align: center;
-  color: #99dee3;
-  padding-top: 1rem;
-}
+
 
 ion-icon {
   vertical-align: middle;
