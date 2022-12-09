@@ -89,7 +89,8 @@ function updateStatus(status) {
       status.dice === 1;
     }
     else {
-      status.dice != 1;
+      // status.dice != 1;
+      document.getElementById("death").style.display = "none";
       document.getElementById('custom-alert-title').innerHTML = "Dice 1";
       document.getElementById('custom-alert-text').innerHTML = "You nearly died.";
       document.getElementById("custom-alert").style.display = "flex";
