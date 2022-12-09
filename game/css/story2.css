@@ -62,16 +62,19 @@ body {
 }
 .page-footer {
   display: flex;
-  /* position: absolute; */
+  position: relative;
+  top: 10rem;
   width: 100%;
-  height: 8rem;
+  height: 10rem;
   background-color: #01011a;
   text-align: center;
   color: #99dee3;
   padding-top: 1rem;
+  padding-bottom: 3rem;
   align-content: center;
   justify-content: center;
   
+
 }
 
 ion-icon {
