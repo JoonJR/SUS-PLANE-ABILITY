@@ -221,7 +221,7 @@ h1.font-effect-fire{
 .story{
     background-color: #01012b;
     flex: 1;
-    min-height: 662px;
+    min-height: 682px;
     margin: 0;
     overflow: hidden !important;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -237,7 +237,7 @@ h1.font-effect-fire{
     font-weight: 500;
     font-size: 3.25rem;
     opacity: 0;
-    animation: intro 6s ease-out 0.5s;
+    animation: intro 4s ease-out 0.5s;
 }
 @keyframes intro{
     0% {
@@ -289,10 +289,10 @@ p{
     font-size: 350%;
     text-align: justify;
     overflow: hidden;
-    height:50em;
+    height:80em;
     width:20em;
     position: absolute;
-    bottom: 0;
+    bottom: 2em;
     left: 50%;
     margin-left: -10em;
     z-index: 0;
