@@ -87,32 +87,37 @@
     </figure>
     <main class="flex-wrap">
         <div class="box">
-            <div class="weather">
-                <table>
-                    <td>
-                        <img id="weather-icon" src="https://openweathermap.org/img/wn/10d@2x.png" alt="current weather">
-                    </td>
-                    <td><span id="airport-temp"><b>10°C</b></span></td>
-                </table>
-            </div>
+            <div class='weather'>
+                <figure id="temp">
+                    <img id="weather-icon" src="https://openweathermap.org/img/wn/10d@2x.png" alt="current weather">
+                    <span id="airport-temp"><b>10°C</b></span>
+                </figure>
+            </div>    
             <div id="player-modal">
                 <form id="player-form">
                     <input id="player-input" type="text" placeholder="Player name" required>
-                    <input type="submit" value="Start game">
+                    <button id='clickk' type="submit" value="Start game">Start game</button>
                 </form>
             </div>
-            <!-- <div class ='custom-alert-box'>
+            <div class ='custom-alert-box'>
                 <figure id="custom-alert">
                     <h3 id ='custom-alert-title'>DICE 1</h3>
                     <p id ='custom-alert-text'>You died</p>
-                    <button id="oki">OK</button>
+                    <button id="oks">OK</button>
                 </figure>
-            </div> -->
+            </div>
             <div class='death-window'>
                 <figure id="death">
                     <h3 id='death-title'>GAME OVER!</h3>
                     <p id='death-text'>"Times out! You didn't save the Earth in time."</p>
-                    <button id="oks">OK</button>
+                    <button id="oki">OK</button>
+                </figure>
+            </div>
+            <div class='win-box'>
+                <figure id="win">
+                    <h3 id='win-title'>GAME OVER!</h3>
+                    <p id='win-text'>"Times out! You didn't save the Earth in time."</p>
+                    <button id="okay">OK</button>
                 </figure>
             </div>
         </div>

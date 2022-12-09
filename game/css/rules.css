@@ -1,0 +1,208 @@
+
+/* utilites */
+.button {
+  display: block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 4px;
+  text-align: center;
+  transition: all 300ms;
+}
+
+.easymode{
+  background-color: #05d9e8;
+}
+
+.button-white {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+.button:hover {
+  transform: scale(1.1);
+}
+
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #01012b;
+
+
+}
+
+.space-evenly {
+  justify-content: space-evenly;
+}
+
+.responsive-img {
+  width: 100%;
+  height: auto;
+}
+
+
+
+
+
+/* app specific */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #01012b;
+  scroll-behavior: smooth;
+}
+.container {
+  width: 100%;
+  position: relative;
+}
+
+.page-header {
+  height: auto;
+  width: auto;
+  background-color:#01011a;
+  padding: 1rem;
+  padding-bottom:1rem;
+}
+.page-footer {
+  display: flex;
+  flex-direction: column;
+  background-color: #01011a;
+  text-align: center;
+  color: #99dee3;
+  align-content: center;
+  justify-content: center;
+  height: 5rem;
+}
+
+
+/* .font-effect-fire {
+  text-shadow: 0 -0.05em 0.2em #FFF, 0.01em -0.02em 0.15em #FE0, 0.01em -0.05em 0.15em #FC0, 0.02em -0.15em 0.2em #F90, 0.04em -0.20em 0.3em #F70, 0.05em -0.25em 0.4em #F70, 0.06em -0.2em 0.9em #F50, 0.1em -0.1em 1.0em #F40;
+  color: #ffe;
+} */
+
+ion-icon {
+  vertical-align: middle;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li{
+  line-height: 2rem;
+  font-size:larger;
+  
+}
+
+main {
+  padding: 1rem 2rem;
+}
+
+h1.font-effect-fire{
+ padding-bottom: 3rem;
+   margin: 0;
+  text-align: center;
+  font-size: 60px;
+  font-family: 'Zen Dots', cursive;
+  color: #05d9e8;
+
+
+}
+
+
+.sidebar {
+   height: 100%;/* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+   position: fixed;/* Stay in place */
+  z-index:1000; /* Stay on top */
+  top: 0;
+  left: 0;
+  background-color: #111; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+}
+
+/* The sidebar links */
+.sidebar a {
+  padding: 5px 5px 5px 28px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 35px;
+  margin-left: 60px;
+}
+
+/* The button used to open the sidebar */
+.openbtn {
+  font-size: 30px;
+  cursor: pointer;
+  background-color: #01012b;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 10px;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s; /* If you want a transition effect */
+  padding: 20px;
+
+}
+body{
+  background-color: #01012b;
+}
+h2{
+  color: #add7db;
+}
+ol{
+  color: #add7db;
+}
+figure{
+  display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+#gif{
+  padding: 1rem 1rem 1rem 1rem;
+  border-radius:2rem;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidebar {
+        padding-top: 15px;
+    }
+
+    .sidebar a {
+        font-size: 18px;
+    }
+}
+@media screen and (min-height: 1080px) {
+    .story{
+        height: 850px;
+    }
+}
