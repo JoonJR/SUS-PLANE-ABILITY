@@ -1,14 +1,11 @@
 import json
 import os
-
 import mysql.connector
 from dotenv import load_dotenv
 from flask import Flask, request
 from flask_cors import CORS
-
 import config
 from game import Game
-from airport import Airport
 
 load_dotenv()
 
@@ -40,7 +37,6 @@ def fly(id, dest, consumption=0, player=None):
     return json_data
 
 
-# http://127.0.0.1:5000/flyto?game=fEC7n0loeL95awIxgY7M&dest=EFHK&consumption=123
 @app.route('/flyto')
 def flyto():
     args = request.args
@@ -52,7 +48,6 @@ def flyto():
     return json_data
 
 
-# http://127.0.0.1:5000/newgame?player=Vesa&loc=EFHK
 @app.route('/newgame')
 def newgame():
     args = request.args

@@ -1,5 +1,3 @@
-// 'use strict';
-
 const map = L.map('map', {tap: false});
 L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
   

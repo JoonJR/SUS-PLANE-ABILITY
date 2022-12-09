@@ -44,7 +44,7 @@ initial_airport = input("Enter initial airport (default="+ config.default_starti
 if (initial_airport==""):
     initial_airport = config.default_starting_point
 
-# http://127.0.0.1:5000/newgame?loc=EFKE&player=Urpopekka
+
 request = "http://127.0.0.1:5000/newgame?loc=" + initial_airport + "&player=" + name
 
 while True:
@@ -62,6 +62,6 @@ while True:
         quit()
     print ("Generating flight plan to " + destination)
 
-    # http://127.0.0.1:5000/flyto?game=p5eiPgQPT9jbIt1TlqzH&dest=EFHK
+
     request = "http://127.0.0.1:5000/flyto?game=" + response["status"]["id"] + "&dest=" + destination
 
