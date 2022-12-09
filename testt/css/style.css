@@ -413,15 +413,14 @@ input[type=text]{
   margin: 0;
  
 } */
-#custom-alert{
+/* #custom-alert{
  position: absolute;
   top:32rem;
   width: 30%;
-  left: 33rem;
+  left: 42rem;
   height: 30%;
   background-color: #d1f7ff99;
-  display: none;
-  /* display: flex; */
+  display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   align-content: center;
@@ -429,20 +428,20 @@ input[type=text]{
   margin: 0;
   border-radius: 2rem;
   /* padding-bottom: 1rem; */
-}
+
 
 #death {
   position: absolute;
   top:32rem;
   width: 30%;
-  left: 33rem;
+  left: 42rem;
   height: 30%;
   background-color:#ff2a6ea0;
   color: #010127;
   display: none;
-
   flex-wrap: wrap;
-  align-content: center;
+  align-items: center;
+  flex-direction: column;
   justify-content: space-around;
   margin: 0;
   border-radius: 2rem;

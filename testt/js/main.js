@@ -20,7 +20,7 @@ const greenIcon = L.divIcon({className: 'green-icon'})
 
 //timer
   function timer(){
-  document.getElementById('timer').innerHTML = 03 + ":" + 00;
+  document.getElementById('timer').innerHTML = 0 + ":" + 10;
   startTimer();
   function startTimer() {
     var presentTime = document.getElementById('timer').innerHTML;
@@ -31,11 +31,14 @@ const greenIcon = L.divIcon({className: 'green-icon'})
     if(m<0){
       return
     }
+    if (m ==0 && s ==5){ 
+      document.getElementById('timer').style.color = "#ff2a6ea0";
+    }
     if (m ==0 && s ==0){ //time runs out
       document.getElementById("map").style.filter = "hue-rotate(200deg)"
       setTimeout(function() { // message will appear after 2 sec 
         document.getElementById("death").style.display = "flex";
-        document.getElementById("death-text").innerHTML = "Times out! You were too slow."
+        document.getElementById("death-text").innerHTML = "Times out! You didn't save the Earth in time."
         oks.addEventListener("click", function() {
       window.location.reload();
     });
@@ -77,10 +80,10 @@ function updateStatus(status) {
   document.querySelector('#consumed').innerHTML = `${status.co2.consumed}`;
   document.querySelector('#countries').innerHTML = `${status.collected_countries}`
   document.querySelector('#dice').innerHTML = `${status.dice}`;
-  const oki = document.getElementById('oki');
-  const customAlert = document.getElementById("custom-alert");
-  const customAlerttitle = document.getElementById('custom-alert-title');
-  const custumAlerttext = document.getElementById('custom-alert-text');
+  const oki = document.getElementById('oks');
+  const customAlert = document.getElementById("death");
+  const customAlerttitle = document.getElementById('death-title');
+  const custumAlerttext = document.getElementById('death-text');
  
   if (status.dice === 1) {
     let chance =(Math.floor(Math.random() * 2) + 1); //increases chances of surviving
@@ -91,6 +94,7 @@ function updateStatus(status) {
       status.dice != 1;
       customAlerttitle.innerHTML = "Dice 1";
       custumAlerttext.innerHTML = "You nearly died.";
+      customAlert.style.backgroundColor = "#d1f7ff99";
       customAlert.style.display = "flex";
       oki.addEventListener("click", function() {
         customAlert.style.display = "none";
@@ -101,6 +105,7 @@ function updateStatus(status) {
   if (status.dice === 2) {
     customAlerttitle.innerHTML = "Dice 2";
     custumAlerttext.innerHTML = "You had to take an unexpected detour. Double the amount of Co2 consumed.";
+    customAlert.style.backgroundColor = "#d1f7ff99";
     customAlert.style.display = "flex";
     oki.addEventListener("click", function() {
       customAlert.style.display = "none";
@@ -109,6 +114,7 @@ function updateStatus(status) {
   if (status.dice === 3) {
     customAlerttitle.innerHTML = "Dice3";
     custumAlerttext.innerHTML = "Your planes GPS breaks and you ended up somewhere else.";
+    customAlert.style.backgroundColor = "#d1f7ff99";
     customAlert.style.display = "flex";
     oki.addEventListener("click", function() {
       customAlert.style.display = "none";
@@ -117,6 +123,7 @@ function updateStatus(status) {
   if (status.dice === 4) {
     customAlerttitle.innerHTML = "Dice 4";
     custumAlerttext.innerHTML = "Your plane had to return to the previous airport. Full amount of Co2 wasted for that trip.";
+    customAlert.style.backgroundColor = "#d1f7ff99";
     customAlert.style.display = "flex";
     oki.addEventListener("click", function() {
       customAlert.style.display = "none";
@@ -126,6 +133,7 @@ function updateStatus(status) {
   if (status.dice === 5) {
     customAlerttitle.innerHTML = "Dice 5";
     custumAlerttext.innerHTML = "You got a 50% Co2 refund for this flight.";
+    customAlert.style.backgroundColor = "#d1f7ff99";
     customAlert.style.display = "flex";
     oki.addEventListener("click", function() {
       customAlert.style.display = "none";
@@ -134,6 +142,7 @@ function updateStatus(status) {
   if (status.dice === 6) {
     customAlerttitle.innerHTML = "Dice 6";
     custumAlerttext.innerHTML = "You got a full Co2 refund for this flight.";
+    customAlert.style.backgroundColor = "#d1f7ff99";
     customAlert.style.display = "flex";
     oki.addEventListener("click", function() {
       customAlert.style.display = "none";
@@ -160,11 +169,13 @@ function showCountriesData(airport){
 // functions to check if the player went over the budget
 function checkGameOver(budget) {
   if (budget <= 0) {
-  document.getElementById("custom-alert").style.display ="none"
+  // document.getElementById("custom-alert").style.display ="none"
   document.getElementById("map").style.filter = "hue-rotate(200deg)"
 
   setTimeout(function() { // message will appear after 2 sec 
-    document.getElementById("death").style.display = "flex";
+    // document.getElementById("death").style.display = "flex";
+    document.getElementById("death-title").innerHTML = 'GAME OVER';
+    document.getElementById("death").style.backgroundColor = '#ff2a6ea0';
     document.getElementById("death-text").innerHTML = "You went over the budget and caused even worse pollution. Good job!."
     document.getElementById("oks").addEventListener("click", function() {
     window.location.reload(); 
