@@ -94,7 +94,9 @@ li{
   font-size:larger;
   
 }
-
+p{
+  font-size:larger;
+}
 main {
   padding: 1rem 2rem;
 }
