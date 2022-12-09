@@ -1,10 +1,10 @@
-from flask import Flask, request, jsonify, make_response
+from flask import Flask
 from flask_cors import CORS
 import mysql.connector
-import string, random
+
 import config
 from airport import Airport
-import json
+
 
 
 
@@ -66,30 +66,45 @@ app.config['JSON_SORT_KEYS'] = False
 
 @app.route('/airports')      # decorator
 def airports():
-    sql = "SELECT ident,name,municipality, latitude_deg, longitude_deg FROM airport"
+    sql = "SELECT ident,name, latitude_deg, longitude_deg FROM airport"
     db_cursor = db_connection.cursor()
     db_cursor.execute(sql)
     res = db_cursor.fetchall()
     airports_list = []
     list = []
+    status = {
+        'status': {
+            "id": "",
+            "name": "Karin",
+            "dice": 1,
+            "countries": 1,
+            "co2":{
+                "consumed": 0,
+                "budget": 10000
+            },
+            "previous_location": ""
+        },
+        "location": []
+
+    }
+    airports_list.append(status)
+    print(status['location'])
     for r in res:
 
         response = {
             "ident": r[0],
             "active": False,
             "name": r[1],
-            "Location": r[2],
-            "latitude": r[3],
-            "longitude": r[4]
+            "latitude": r[2],
+            "longitude": r[3],
+            "distance" : 0,
+            'co2_consumption' : 0
         }
         airports_list.append(response)
-        rresult = json.dumps(airports_list)
-        list.append(rresult)
-        
-        
-        #airports_list[0]["active"] = True #just to test
+        airports_list[0]["active"] = True #just to test
         
     return airports_list
+
 
 def find_nearby_airports(self):
         lista = []
