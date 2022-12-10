@@ -42,7 +42,7 @@ This document is intended to read by fellow programmers, supervisors and teacher
 # Vision
 The purpose of the game is to make an interactive gaming experience for the player and game as per the requirement of final project work of software 2. It is possible to play the game by using keyboard and mouse only.
 ## Game Concept
-To live in a space station, what an honor. Years ago, you (player) were selected among millions to be one of the few lucky individuals to take part in an experiment started by Sustainability Administration. As one of the chosen few you had the opportunity to look down upon earth in all its glory. Months later you notice that the earth no longer looks as it once did. As it turns out this was the reason behind this whole experiment. 
+Years ago, you (player) were selected among millions to be one of the few lucky individuals to take part in an experiment started by Sustainability Administration. As one of the chosen few you had the opportunity to look down upon earth in all its glory. Months later you notice that the earth no longer looks as it once did. As it turns out this was the reason behind this whole experiment. 
 
 Earth doesn't have much more time. The corrupt world you see before you are a product of the unsustainable lifestyle of humans. No one else on the space station shared your worries with the corruption taking over Earth. You knew you had to act, even if you were alone. With your trusty space-made purification gun, and only a few minutes to spare you hijack an escape pod and make your way to Earth to purify the spreading corruption. Landing right outside of the airport, you come across an old airplane with limited co2 amount.
 
@@ -58,9 +58,9 @@ Player has to fly to all the EU countries and purify them. For every 10 collecte
 
 
 ## Dice of Fate (Conditions)
-- 1: Game Over. Player is dead.
+- 1: Player has a 50% chance of dying.
 - 2: Plane had to take an unexpected detour. Double the amount of Co2 consumed.
-- 3: Planes GPS breaks and you ended up somewhere else.
+- 3: Plane's GPS breaks and you ended up somewhere else.
 - 4: Plane had to return to the previous airport. Full amount of Co2 wasted for that trip.
 - 5: Player got a 50% Co2 refund for this flight.
 - 6: Player got a full Co2 refund for this flight.
