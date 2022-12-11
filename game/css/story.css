@@ -13,10 +13,8 @@
   padding: 1rem;
   padding-bottom:1rem;
 }
-
 .easymode {
-  
-  appearance: button;
+
   background-color:#04a7b2;
   border: solid transparent;
   border-radius: 16px;
@@ -45,7 +43,6 @@
   white-space: nowrap;
   width: 5%;
 }
-
 .easymode:after {
   background-clip: padding-box;
   background-color:#05d9e8;
@@ -60,51 +57,28 @@
   top: 0;
   z-index: -1;
 }
-
-.easymode:main,
-.easymode:focus {
-  user-select: auto;
-}
-
 .easymode:hover:not(:disabled) {
   filter: brightness(1.1);
   -webkit-filter: brightness(1.1);
 }
-
 .easymode:disabled {
   cursor: auto;
 }
-
-.button-white {
-  background-color: var(--white);
-  color: var(--black);
-}
-
 .button:hover {
   transform: scale(1.1);
 }
-
 .flex-wrap {
   display: flex;
   flex-wrap: wrap;
   background-color: #01012b;
-
-
 }
-
 .space-evenly {
   justify-content: space-evenly;
 }
-
 .responsive-img {
   width: 100%;
   height: auto;
 }
-
-
-
-
-
 /* app specific */
 html,
 body {
@@ -118,8 +92,6 @@ body {
   width: 100%;
   position: relative;
 }
-
-
 .page-footer {
   display: flex;
   flex-direction: column;
@@ -130,37 +102,23 @@ body {
   justify-content: center;
   height: 5rem;
 }
-
-/* .font-effect-fire {
-  text-shadow: 0 -0.05em 0.2em #FFF, 0.01em -0.02em 0.15em #FE0, 0.01em -0.05em 0.15em #FC0, 0.02em -0.15em 0.2em #F90, 0.04em -0.20em 0.3em #F70, 0.05em -0.25em 0.4em #F70, 0.06em -0.2em 0.9em #F50, 0.1em -0.1em 1.0em #F40;
-  color: #ffe;
-} */
-
 ion-icon {
   vertical-align: middle;
 }
-
 ul {
   list-style-type: none;
   padding: 0;
 }
-
 main {
   padding: 1rem 2rem;
 }
-
 h1.font-effect-fire{
-
    margin: 0;
   text-align: center;
   font-size: 60px;
   font-family: 'Zen Dots', cursive;
   color: #05d9e8;
-
-
 }
-
-
 .sidebar {
    height: 100%;/* 100% Full-height */
   width: 0; /* 0 width - change this with JavaScript */
@@ -173,7 +131,6 @@ h1.font-effect-fire{
   padding-top: 60px; /* Place content 60px from the top */
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
 }
-
 /* The sidebar links */
 .sidebar a {
   padding: 5px 5px 5px 28px;
@@ -183,12 +140,10 @@ h1.font-effect-fire{
   display: block;
   transition: 0.3s;
 }
-
 /* When you mouse over the navigation links, change their color */
 .sidebar a:hover {
   color: #f1f1f1;
 }
-
 /* Position and style the close button (top right corner) */
 .sidebar .closebtn {
   position: absolute;
@@ -197,7 +152,6 @@ h1.font-effect-fire{
   font-size: 35px;
   margin-left: 60px;
 }
-
 /* The button used to open the sidebar */
 .openbtn {
   font-size: 30px;
@@ -208,11 +162,9 @@ h1.font-effect-fire{
   border: none;
   border-radius: 10px;
 }
-
 .openbtn:hover {
   background-color: #444;
 }
-
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
   transition: margin-left .5s; /* If you want a transition effect */
@@ -256,7 +208,6 @@ h1.font-effect-fire{
 
     }
 }
-
 .logo{
     position: absolute;
     top: 50%;
@@ -273,7 +224,6 @@ h1.font-effect-fire{
     }
     70% {
         opacity: 1;
-
     }
     100% {
         opacity: 0;
@@ -356,6 +306,6 @@ ol  {
 }
 @media screen and (min-height: 1080px) {
     .story{
-        height: 850px;
+        height: 905px;
     }
 }

@@ -12,12 +12,6 @@
 .easymode{
   background-color: #05d9e8;
 }
-
-.button-white {
-  background-color: var(--white);
-  color: var(--black);
-}
-
 .button:hover {
   transform: scale(1.1);
 }
@@ -26,19 +20,14 @@
   display: flex;
   flex-wrap: wrap;
   background-color: #01012b;
-
-
 }
-
 .space-evenly {
   justify-content: space-evenly;
 }
-
 .responsive-img {
   width: 100%;
   height: auto;
 }
-
 /* app specific */
 html,
 body {
@@ -52,7 +41,6 @@ body {
   width: 100%;
   position: relative;
 }
-
 .page-header {
   height: auto;
   width: auto;
@@ -73,23 +61,17 @@ body {
   padding-bottom: 3rem;
   align-content: center;
   justify-content: center;
-  
-
 }
-
 ion-icon {
   vertical-align: middle;
 }
-
 ul {
   list-style-type: none;
   padding: 0;
 }
-
 main {
   padding: 1rem 2rem;
 }
-
 h1.font-effect-fire{
  padding-bottom: 3rem;
    margin: 0;
@@ -97,11 +79,7 @@ h1.font-effect-fire{
   font-size: 60px;
   font-family: 'Zen Dots', cursive;
   color: #05d9e8;
-
-
 }
-
-
 .sidebar {
    height: 100%;/* 100% Full-height */
   width: 0; /* 0 width - change this with JavaScript */
@@ -114,7 +92,6 @@ h1.font-effect-fire{
   padding-top: 60px; /* Place content 60px from the top */
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
 }
-
 /* The sidebar links */
 .sidebar a {
   padding: 5px 5px 5px 28px;
@@ -124,12 +101,10 @@ h1.font-effect-fire{
   display: block;
   transition: 0.3s;
 }
-
 /* When you mouse over the navigation links, change their color */
 .sidebar a:hover {
   color: #f1f1f1;
 }
-
 /* Position and style the close button (top right corner) */
 .sidebar .closebtn {
   position: absolute;
@@ -138,7 +113,6 @@ h1.font-effect-fire{
   font-size: 35px;
   margin-left: 60px;
 }
-
 /* The button used to open the sidebar */
 .openbtn {
   font-size: 30px;
@@ -149,16 +123,13 @@ h1.font-effect-fire{
   border: none;
   border-radius: 10px;
 }
-
 .openbtn:hover {
   background-color: #444;
 }
-
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
   transition: margin-left .5s; /* If you want a transition effect */
   padding: 20px;
-
 }
 body{
   background-color: #01012b;
@@ -173,14 +144,12 @@ body{
   justify-content: center;
   align-items: center;
   padding: 1rem 1rem 1rem 1rem;
-
 }
 p{
   width: 80%;
   text-align: center;
   line-height:170% ;
   font-size: larger;
-
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
@@ -188,13 +157,12 @@ p{
     .sidebar {
         padding-top: 15px;
     }
-
     .sidebar a {
         font-size: 18px;
     }
 }
 @media screen and (min-height: 1080px) {
-    .story{
-        height: 850px;
-    }
+  #textstory {
+    height: 570px;
+  }
 }
