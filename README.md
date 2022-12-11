@@ -37,9 +37,9 @@ This document includes the game story, vision, functional and quality requiremen
 
 ## Scope
 This document is intended to read by fellow programmers, supervisors and teachers. This document contains brief description of the technical and non-technical aspects of the Flight simulator game project. This can be used as the road map for the future development of game and to extend the game to a new dimension.
-# Current State
+## Current State
 “SUS(PLANE)ABILITY” is a fully functional web-based game. This game is developed by following the instruction given by the project requirement document. Game is stored and run-in local server, not in external web server. 
-# Vision
+## Vision
 The purpose of the game is to make an interactive gaming experience for the player and game as per the requirement of final project work of software 2. It is possible to play the game by using keyboard and mouse only.
 ## Game Concept
 To live in a space station, what an honor. Years ago, you (player) were selected among millions to be one of the few lucky individuals to take part in an experiment started by the World Government. As one of the chosen few you had the opportunity to look down upon earth in all its glory. Months later you notice that the earth no longer looks as it once did. As it turns out this was the reason behind this whole experiment. 
@@ -65,7 +65,7 @@ Player has to fly to all the EU countries and purify them. For every 10 collecte
 - 5: Player got a 50% Co2 refund for this flight.
 - 6: Player got a full Co2 refund for this flight.
 
-# Functional Requirements
+## Functional Requirements
 Start game
 
 Player starts the game by entering his/her name and is assigned a random location in Europe as starting point. 
@@ -86,7 +86,7 @@ After player fly all the 50 countries, he will get notification that ‘Congratu
 
 
 
-# Quality Requirements
+## Quality Requirements
 - All the class and functions in back end is working properly and not providing error
 - Insert player name and create row with id in database 
 - Fetch ICAO from database mark all the airports in map
@@ -97,6 +97,6 @@ After player fly all the 50 countries, he will get notification that ‘Congratu
 - Game timer is working and game over after 3 minutes
 - Html and CSS is valid and working properly 
 #
-# Software Architecture 
+## Software Architecture 
 ![SA.jpg](SA.jpg)
 
