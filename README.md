@@ -1,31 +1,31 @@
 # Table of Contents
-[Introduction	2](#_Toc121543699)
+[Introduction](#introduction)
 
-[Scope	2](#_Toc121543700)
+[Scope](#scope)
 
-[Current State	2](#_Toc121543701)
+[Current State](#current-state)
 
-[Vision	2](#_Toc121543702)
+[Vision](#vision)
 
-[Game Concept	3](#_Toc121543703)
+[Game Concept](#game-concept)
 
-[Game Objective	3](#_Toc121543704)
+[Game Objective](#game-objective)
 
-[Game Rules	3](#_Toc121543705)
+[Game Rules](#game-rules)
 
-[Dice of Fate (Conditions)	4](#_Toc121543706)
+[Dice of Fate (Conditions)](#dice-of-fate-conditions)
 
-[Functional Requirements	4](#_Toc121543707)
+[Functional Requirements](#functional-requirements)
 
-[Quality Requirements	5](#_Toc121543708)
+[Quality Requirements](#quality-requirements)
 
-[Software Architecture	5](#_Toc121543709)
-
-
+[Software Architecture](#software-architecture)
 
 
-# Introduction
-This documentation specifies the stages of design, functionality, gameplay of the game with the title “SUS(PLANE)ABILITY”. This is web-based game, developed by the “Group-2”. It is based on elements discussed in various meetings held since 1st of December 2022.
+
+
+## Introduction
+This documentation specifies the stages of design, functionality, gameplay of the game with the title “SUS(PLANE)ABILITY”. This is web-based game, developed by the “Group-2”. It's based on elements discussed in various meetings held since 1st of December 2022.
 
 The study is dedicated to final game development. This game is the extended version of preliminary game. We made a preliminary version of this game or prototype during software 1. This final version of game is developed that satisfies the requirements of software 2 final project assignment.
 
@@ -42,16 +42,16 @@ This document is intended to read by fellow programmers, supervisors and teacher
 # Vision
 The purpose of the game is to make an interactive gaming experience for the player and game as per the requirement of final project work of software 2. It is possible to play the game by using keyboard and mouse only.
 ## Game Concept
-To live in a space station, what an honor. Years ago, you (player) were selected among millions to be one of the few lucky individuals to take part in an experiment started by Sustainability Administration. As one of the chosen few you had the opportunity to look down upon earth in all its glory. Months later you notice that the earth no longer looks as it once did. As it turns out this was the reason behind this whole experiment. 
+To live in a space station, what an honor. Years ago, you (player) were selected among millions to be one of the few lucky individuals to take part in an experiment started by the World Government. As one of the chosen few you had the opportunity to look down upon earth in all its glory. Months later you notice that the earth no longer looks as it once did. As it turns out this was the reason behind this whole experiment. 
 
 Earth doesn't have much more time. The corrupt world you see before you are a product of the unsustainable lifestyle of humans. No one else on the space station shared your worries with the corruption taking over Earth. You knew you had to act, even if you were alone. With your trusty space-made purification gun, and only a few minutes to spare you hijack an escape pod and make your way to Earth to purify the spreading corruption. Landing right outside of the airport, you come across an old airplane with limited co2 amount.
 
 Fly around to all the countries and purify Earth as you go. The fate of Earth is in your hands; however, your fate is in hands of bored higher beings that like to throw dice, with enough luck you may be able to succeed.
 ## Game Objective
-Player has to fly to all the EU countries and purify them. For every 10 collected countries the corruption will be decreased by 24 percent.
+Player has to fly to all the EU countries and purify them. For every 10 collected countries the corruption will be decreased by 20 percent.
 ## Game Rules
-- Player has 3 minute to fly all the countries in the game. If the time ran out the world will be destroyed and game over.
-- If player exceed the CO2 budget player will pollute the world even more and game over.
+- Player has 3 minutes to fly to all the countries in the game. If the time runs out the world will be destroyed and game is over.
+- If player exceed the CO2 budget player will pollute the world even more and game is over.
 - Every time Player flies the dice of fate will be rolled.
 
 
@@ -60,7 +60,7 @@ Player has to fly to all the EU countries and purify them. For every 10 collecte
 ## Dice of Fate (Conditions)
 - 1: Game Over. Player is dead.
 - 2: Plane had to take an unexpected detour. Double the amount of Co2 consumed.
-- 3: Planes GPS breaks and you ended up somewhere else.
+- 3: Planes GPS breaks and you end up somewhere else.
 - 4: Plane had to return to the previous airport. Full amount of Co2 wasted for that trip.
 - 5: Player got a 50% Co2 refund for this flight.
 - 6: Player got a full Co2 refund for this flight.
@@ -68,19 +68,19 @@ Player has to fly to all the EU countries and purify them. For every 10 collecte
 # Functional Requirements
 Start game
 
-Player starts the game by entering his/her name and assigned a random location in Europe as starting point. 
+Player starts the game by entering his/her name and is assigned a random location in Europe as starting point. 
 
 Fly
 
-Player wants to travel all of 50 countries of Europe. Player can choose the country to fly from the map.
+Player wants to travel all of 50 countries of Europe. Player can choose a country to fly to from the map.
 
 Dice fate
 
-After player choose the country to fly, player will get the notification based on the dice fate. Plane can fly to destination or came back to the previous airport or die (game over).
+After player chooses a country to fly to, player will get the notification based on the dice fate. Plane can fly to destination or come back to the previous airport or die (game over).
 
 Game over 
 
-After player fly all the 50 countries, he will get notification that ‘Congratulation! You purified all the 50 countries!’.
+After player fly all the 50 countries, he will get notification that ‘Congratulations! You purified all the 50 countries!’.
 
 
 
@@ -89,8 +89,8 @@ After player fly all the 50 countries, he will get notification that ‘Congratu
 # Quality Requirements
 - All the class and functions in back end is working properly and not providing error
 - Insert player name and create row with id in database 
-- Fetch ICAO from database mark all the airport in map
-- Display the distance on of destination airport from the current airport before fly
+- Fetch ICAO from database mark all the airports in map
+- Display the distance of destination airport from the current airport before fly
 - Display the goal in web page and update it 
 - Fetch the real time weather from API and display it in screen
 - Fetch the country description from the API and display it in screen
