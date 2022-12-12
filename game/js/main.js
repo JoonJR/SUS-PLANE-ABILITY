@@ -60,7 +60,6 @@ document.querySelector('#player-form').addEventListener('submit', function (evt)
   evt.preventDefault();
   const playerName = document.querySelector('#player-input').value;
   document.getElementById("player-modal").style.display = "none"
-  // document.getElementById("custom-alert").style.display = "flex";
 
   timer(); //starts the timer when the name is entered
   gameSetup(`${apiUrl}newgame?player=${playerName}&loc=${startLoc}`);
@@ -80,22 +79,23 @@ function updateStatus(status) {
   document.querySelector('#consumed').innerHTML = `${status.co2.consumed}`;
   document.querySelector('#countries').innerHTML = `${status.collected_countries}`
   document.querySelector('#dice').innerHTML = `${status.dice}`;
-  // const document.getElementById("custom-alert") = document.getElementById("custom-alert");
-  //const document.getElementById('custom-alert-title') = document.getElementById('custom-alert-title');
+
  
   if (status.dice === 1) {
     let chance =(Math.floor(Math.random() * 2) + 1); //increases chances of surviving
     if (chance === 1){
-      status.dice === 1;
+      document.getElementById("death").style.display = "flex";
+      checkGameOverDice(chance);
+      
     }
     else {
       // status.dice != 1;
       document.getElementById("death").style.display = "none";
+      document.getElementById("custom-alert").style.display = "flex";
       document.getElementById('custom-alert-title').innerHTML = "Dice 1";
       document.getElementById('custom-alert-text').innerHTML = "You nearly died.";
-      document.getElementById("custom-alert").style.display = "flex";
       document.getElementById("oks").addEventListener("click", function() {
-        document.getElementById("custom-alert").style.display = "none";
+      document.getElementById("custom-alert").style.display = "none";
     });
     }
   }
@@ -180,7 +180,7 @@ function checkGameOver(budget) {
 // functions to check if the death dice was rolled
 function checkGameOverDice(dice) {
   if (dice === 1) {
-    document.getElementById("death").style.display = "flex";
+    // document.getElementById("death").style.display = "flex";
         document.getElementById("death-text").innerHTML = "Dice 1. Your plane crashed. Unlucky."
         document.getElementById("oki").addEventListener("click", function() {
       window.location.reload(); });

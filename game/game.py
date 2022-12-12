@@ -70,7 +70,8 @@ class Game:
                 cur3.execute(sql3)
         
             if ran == 1:
-                pass
+                sql2 = "UPDATE Game SET co2_consumed = co2_consumed + " + consumption + ", co2_budget = co2_budget - " + consumption + ", dice = " + str(ran)  + " WHERE id='" + id + "'"
+
             if ran == 2:
                 sql2 = "UPDATE Game SET co2_consumed = co2_consumed + " + str(dice2) + ", co2_budget = co2_budget - " + str(dice2) + ", dice = " + str(ran)  + " WHERE id='" + id + "'"
             if ran == 3:
