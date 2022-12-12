@@ -180,7 +180,6 @@ function checkGameOver(budget) {
 // functions to check if the death dice was rolled
 function checkGameOverDice(dice) {
   if (dice === 1) {
-    // document.getElementById("death").style.display = "flex";
         document.getElementById("death-text").innerHTML = "Dice 1. Your plane crashed. Unlucky."
         document.getElementById("oki").addEventListener("click", function() {
       window.location.reload(); });
