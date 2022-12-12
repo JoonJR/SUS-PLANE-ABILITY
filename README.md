@@ -48,7 +48,7 @@ Earth doesn't have much more time. The polluted world you see before you are a p
 
 Fly around to all the countries and purify Earth as you go. The fate of Earth is in your hands; however, your fate is in hands of bored higher beings that like to throw dice, with enough luck you may be able to succeed.
 ## Game Objective
-Player has to fly to all the EU countries and purify them. For every 10 collected countries the corruption will be decreased by 20 percent.
+Player has to fly to all the EU countries and purify them. For every 10 collected countries the pollution will be decreased by 20 percent.
 ## Game Rules
 - Player has 3 minutes to fly to all the countries in the game. If the time runs out the world will be destroyed and game is over.
 - If player exceed the CO2 budget player will pollute the world even more and game is over.
