@@ -98,5 +98,5 @@ After player fly all the 50 countries, he will get notification that ‘Congratu
 - Html and CSS is valid and working properly 
 #
 ## Software Architecture 
-![SA.jpg](SA.jpg)
+![SA.png](SA.png)
 
